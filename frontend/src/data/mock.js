@@ -117,7 +117,7 @@ export const projects = [
   {
     id: 1,
     title: "Packaging Workflow Automation",
-    category: ["Tools", "Packaging"],
+    category: "Tools",
     description:
       "AI-assisted Windows application packaging pipeline that generates PSADT scripts, opens PRs, and verifies installs on ephemeral VMs.",
     techStack: [
@@ -196,7 +196,7 @@ export const projects = [
   {
     id: 4,
     title: "EZ-PS-Automations",
-    category: ["Scripts", "Packaging"],
+    category: "Scripts",
     description:
       "A comprehensive collection of PowerShell automation tools for Windows system administration and enterprise deployments — includes browser extension deployment, Intunewin conversion tooling, system-context launchers, and user/registry utilities. Designed for SCCM and Intune workflows.",
     techStack: [
