@@ -39,7 +39,7 @@ export const siteConfig = {
     title: "Featured Projects",
     description:
       "A collection of applications, tools, and scripts I've built to solve real-world problems.",
-    categories: ["All", "Apps", "Tools", "Packaging", "Scripts"],
+    categories: ["All", "Apps", "Tools", "Scripts"],
   },
 
   // Open Source Section
