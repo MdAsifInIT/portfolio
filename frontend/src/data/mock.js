@@ -331,7 +331,7 @@ export const timeline = [
   {
     year: "2022",
     title: "Student",
-    company: "DAV",
+    company: "DAV Public School",
     description:
       "Compelted higher secondary education with a focus on science stream.",
   },
