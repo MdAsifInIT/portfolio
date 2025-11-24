@@ -83,7 +83,7 @@ export const siteConfig = {
 // ---------------------------------------------------------------------------
 export const personalInfo = {
   name: "Md Asif",
-  title: "Full-Stack Developer & Automation Enthusiast",
+  title: "Full-Stack Developer & Automation Expert",
   bio: "I automate workflows and build fast, scalable applications for businesses. Passionate about clean code, AI tools, and creating delightful user experiences.",
   email: "mdasifinit@gmail.com",
   location: "Bengaluru, IN",
@@ -130,7 +130,7 @@ export const projects = [
       "GitHub",
     ],
     image:
-      "https://plus.unsplash.com/premium_photo-1663013470712-ae3332c6ebf3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1743385779347-1549dabf1320?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     liveUrl: null,
     githubUrl: "https://github.com/mdasifinit/Packaging-Workflow-Automation",
     featured: true,
