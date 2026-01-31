@@ -39,7 +39,7 @@ export const siteConfig = {
     title: "Featured Projects",
     description:
       "A collection of applications, tools, and scripts I've built to solve real-world problems.",
-    categories: ["All", "Apps", "Tools", "Packaging", "Scripts"],
+    categories: ["All", "Apps", "Tools", "Scripts"],
   },
 
   // Open Source Section
@@ -117,7 +117,7 @@ export const projects = [
   {
     id: 1,
     title: "Packaging Workflow Automation",
-    category: ["Tools", "Packaging"],
+    category: "Tools",
     description:
       "AI-assisted Windows application packaging pipeline that generates PSADT scripts, opens PRs, and verifies installs on ephemeral VMs.",
     techStack: [
@@ -130,7 +130,7 @@ export const projects = [
       "GitHub",
     ],
     image:
-      "https://plus.unsplash.com/premium_photo-1663013470712-ae3332c6ebf3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1743385779347-1549dabf1320?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     liveUrl: null,
     githubUrl: "https://github.com/mdasifinit/Packaging-Workflow-Automation",
     featured: true,
@@ -196,7 +196,7 @@ export const projects = [
   {
     id: 4,
     title: "EZ-PS-Automations",
-    category: ["Scripts", "Packaging"],
+    category: "Scripts",
     description:
       "A comprehensive collection of PowerShell automation tools for Windows system administration and enterprise deployments — includes browser extension deployment, Intunewin conversion tooling, system-context launchers, and user/registry utilities. Designed for SCCM and Intune workflows.",
     techStack: [
@@ -358,7 +358,7 @@ export const timeline = [
   {
     year: "2022",
     title: "Student",
-    company: "DAV",
+    company: "DAV Public School",
     description:
       "Compelted higher secondary education with a focus on science stream.",
   },
