@@ -225,7 +225,7 @@ export const projects = [
       "WebView2",
       "Windows App SDK",
     ],
-    image: "/notebooklm_wrapper_showcase_1769845180039.png",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1170&auto=format&fit=crop",
     liveUrl: null,
     githubUrl: "https://github.com/MdAsifInIT/NotebookLMWrapper",
     featured: true,
