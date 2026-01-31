@@ -73,7 +73,7 @@ const About = () => {
           <div className="max-w-4xl mx-auto">
             {timeline.map((item, index) => {
               const isEven = index % 2 === 0;
-              const Icon = item.title.includes('B.S.') || item.title.includes('Education') || item.title.includes('BSc') || item.title.includes('Student') ? GraduationCap : Briefcase;
+              const Icon = item.type === 'education' ? GraduationCap : Briefcase;
               
               return (
                 <div

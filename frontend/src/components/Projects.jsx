@@ -105,7 +105,7 @@ const Projects = () => {
                 <div className="absolute top-4 right-4 z-20 flex gap-2">
                   {project.featured && (
                     <span className="bg-yellow-400/90 backdrop-blur-sm text-yellow-950 px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                      Featured
+                      {siteConfig.projects.ui.featuredLabel}
                     </span>
                   )}
                 </div>
@@ -113,7 +113,7 @@ const Projects = () => {
                 {/* Overlay Button */}
                 <div className="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <span className="px-6 py-3 bg-white/90 dark:bg-black/80 backdrop-blur-md rounded-full text-sm font-semibold text-gray-900 dark:text-white flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    View Details <ArrowUpRight className="w-4 h-4" />
+                    {siteConfig.projects.ui.viewDetailsLabel} <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </div>
               </div>

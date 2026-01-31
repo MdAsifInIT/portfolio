@@ -35,39 +35,19 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">{siteConfig.footer.quickLinksTitle}</h4>
             <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('projects');
-                    element?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                >
-                  Projects
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('opensource');
-                    element?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                >
-                  Open Source
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('about');
-                    element?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                >
-                  About
-                </button>
-              </li>
+              {siteConfig.footer.links.map((link) => (
+                <li key={link.id}>
+                  <button
+                    onClick={() => {
+                      const element = document.getElementById(link.id);
+                      element?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 

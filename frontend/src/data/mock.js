@@ -1,12 +1,12 @@
 // ============================================================================
-// PORTFOLIO CONFIGURATION - Edit this file to customize your portfolio
+// PORTFOLIO CONFIGURATION - Single Source of Truth (SSOT)
 // ============================================================================
 
 // ---------------------------------------------------------------------------
-// SECTION VISIBILITY TOGGLES
-// Set to false to hide entire sections from your website
+// GLOBAL SITE CONFIGURATION & UI TEXT
 // ---------------------------------------------------------------------------
 export const siteConfig = {
+  // Feature Toggles
   sections: {
     showHero: true,
     showProjects: true,
@@ -16,7 +16,15 @@ export const siteConfig = {
     showTestimonials: false,
   },
 
-  // Header/Navigation
+  // Centralized UI Strings & Labels
+  ui: {
+    common: {
+      loading: "Loading...",
+      error: "Something went wrong",
+    },
+  },
+
+  // Header/Navigation Configuration
   header: {
     logo: "MA",
     navigationItems: [
@@ -25,9 +33,13 @@ export const siteConfig = {
       { id: "opensource", label: "Open Source" },
       { id: "about", label: "About" },
     ],
+    ariaLabels: {
+      themeToggle: "Toggle theme",
+      mobileMenu: "Toggle menu",
+    },
   },
 
-  // Hero Section
+  // Hero Section Configuration
   hero: {
     ctaButtons: {
       primary: "View Projects",
@@ -35,24 +47,30 @@ export const siteConfig = {
     },
   },
 
-  // Projects Section
+  // Projects Section Configuration
   projects: {
     title: "Featured Projects",
     description:
       "A collection of applications, tools, and scripts I've built to solve real-world problems.",
     categories: ["All", "Apps", "Tools", "Scripts"],
+    ui: {
+      featuredLabel: "Featured",
+      viewDetailsLabel: "View Details",
+    }
   },
 
-  // Open Source Section
+  // Open Source Section Configuration
   openSource: {
     title: "Open Source Contributions",
     description:
       "Building and maintaining open source projects that developers around the world use.",
     githubProfileUrl: "https://github.com/mdasifinit",
-    githubCta: "View All on GitHub",
+    ui: {
+      buttonText: "View All on GitHub",
+    }
   },
 
-  // About Section
+  // About Section Configuration
   about: {
     title: "About Me",
     description:
@@ -61,21 +79,27 @@ export const siteConfig = {
     skillsTitle: "Technical Skills",
   },
 
-  // Footer
+  // Contact Configuration
+  contact: {
+    title: "Get In Touch",
+    description:
+      "Send me a message and I'll get back to you as soon as possible.",
+    submitButton: "Send Message",
+  },
+
+  // Footer Configuration
   footer: {
     quickLinksTitle: "Quick Links",
     connectTitle: "Connect",
     copyrightText: "All rights reserved.",
     builtWithText: "Built with",
     builtWithTech: "and React",
-  },
-
-  // Contact Modal
-  contact: {
-    title: "Get In Touch",
-    description:
-      "Send me a message and I'll get back to you as soon as possible.",
-    submitButton: "Send Message",
+    // Dynamic Footer Links
+    links: [
+      { id: "projects", label: "Projects" },
+      { id: "opensource", label: "Open Source" },
+      { id: "about", label: "About" },
+    ],
   },
 };
 
@@ -112,7 +136,6 @@ export const socialLinks = [
 
 // ---------------------------------------------------------------------------
 // PROJECTS
-// Add or remove projects here. Set featured: true to highlight them.
 // ---------------------------------------------------------------------------
 export const projects = [
   {
@@ -245,7 +268,6 @@ export const projects = [
 
 // ---------------------------------------------------------------------------
 // OPEN SOURCE REPOSITORIES
-// Showcase your GitHub repositories with stats
 // ---------------------------------------------------------------------------
 export const openSourceRepos = [
   {
@@ -300,7 +322,6 @@ export const openSourceRepos = [
 
 // ---------------------------------------------------------------------------
 // SKILLS
-// Organize your technical skills by category
 // ---------------------------------------------------------------------------
 export const skills = {
   "Packaging & Deployment": [
@@ -332,7 +353,6 @@ export const skills = {
 
 // ---------------------------------------------------------------------------
 // TIMELINE (Experience & Education)
-// Add your work experience and education history
 // ---------------------------------------------------------------------------
 export const timeline = [
   {
@@ -341,6 +361,7 @@ export const timeline = [
     company: "BITS Pilani",
     description:
       "Pursuing undergraduate studies with a focus on software development, algorithms, and systems design.",
+    type: "education",
   },
   {
     year: "2023-Present",
@@ -348,6 +369,7 @@ export const timeline = [
     company: "HCL Tech",
     description:
       "Automating IT workflows and managing application lifecycle for enterprise clients.",
+    type: "experience",
   },
   {
     year: "2022-2023",
@@ -355,6 +377,7 @@ export const timeline = [
     company: "HCL Tech",
     description:
       "Learnt various IT fundamentals including networking, OS and hypervisors.",
+    type: "experience",
   },
   {
     year: "2022",
@@ -362,12 +385,12 @@ export const timeline = [
     company: "DAV Public School",
     description:
       "Compelted higher secondary education with a focus on science stream.",
+    type: "education",
   },
 ];
 
 // ---------------------------------------------------------------------------
 // OPEN SOURCE CONTRIBUTIONS
-// Highlight your contributions to major projects
 // ---------------------------------------------------------------------------
 export const contributions = [
   {
@@ -395,7 +418,6 @@ export const contributions = [
 
 // ---------------------------------------------------------------------------
 // TESTIMONIALS
-// Client reviews and recommendations
 // ---------------------------------------------------------------------------
 export const testimonials = [
   {

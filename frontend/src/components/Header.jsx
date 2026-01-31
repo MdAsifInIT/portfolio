@@ -95,18 +95,18 @@ const Header = () => {
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 text-gray-700 dark:text-gray-300"
-              aria-label="Toggle theme"
+              aria-label={siteConfig.header.ariaLabels.themeToggle}
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+            {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-4">
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 text-gray-700 dark:text-gray-300"
-              aria-label="Toggle theme"
+              aria-label={siteConfig.header.ariaLabels.themeToggle}
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
@@ -118,7 +118,7 @@ const Header = () => {
                 setIsMobileMenuOpen(!isMobileMenuOpen);
               }}
               className="text-gray-900 dark:text-white p-3 hover:bg-gray-100 dark:hover:bg-gray-800 active:bg-gray-200 dark:active:bg-gray-700 rounded-lg transition-colors duration-200 z-[60] relative touch-manipulation cursor-pointer"
-              aria-label="Toggle menu"
+              aria-label={siteConfig.header.ariaLabels.mobileMenu}
               type="button"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
