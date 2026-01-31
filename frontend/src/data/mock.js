@@ -13,6 +13,7 @@ export const siteConfig = {
     showOpenSource: true,
     showAbout: true,
     showFooter: true,
+    showTestimonials: false,
   },
 
   // Header/Navigation
