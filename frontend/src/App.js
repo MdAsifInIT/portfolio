@@ -38,7 +38,7 @@ const Home = () => {
         {siteConfig.sections.showProjects && <Projects />}
         {siteConfig.sections.showOpenSource && <OpenSource />}
         {siteConfig.sections.showAbout && <About />}
-        <Testimonials />
+{siteConfig.sections.showTestimonials && <Testimonials />}
       </Suspense>
 
       {siteConfig.sections.showFooter && <Footer />}
