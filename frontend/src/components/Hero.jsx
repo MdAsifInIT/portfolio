@@ -62,7 +62,7 @@ const Hero = ({ onContactClick }) => {
           {/* Title */}
           <h2
             ref={titleRef}
-            className="text-2xl md:text-3xl lg:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-8 opacity-0 translate-y-4 transition-all duration-700 ease-out"
+            className="text-2xl md:text-3xl lg:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-8 pb-2 opacity-0 translate-y-4 transition-all duration-700 ease-out"
           >
             {personalInfo.title}
           </h2>

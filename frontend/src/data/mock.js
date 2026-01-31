@@ -84,7 +84,7 @@ export const siteConfig = {
 export const personalInfo = {
   name: "Md Asif",
   title: "AI Automation Engineer",
-  bio: "I automate workflows and build fast, scalable applications for businesses. Passionate about clean code, AI tools, and creating delightful user experiences.",
+  bio: "I build systems that work for you, not the other way around.",
   email: "mdasifinit@gmail.com",
   location: "Bengaluru, IN",
 };
