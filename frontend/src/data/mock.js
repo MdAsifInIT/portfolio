@@ -392,3 +392,31 @@ export const contributions = [
     status: "merged",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// TESTIMONIALS
+// Client reviews and recommendations
+// ---------------------------------------------------------------------------
+export const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    role: "Senior Developer",
+    content: "One of the most talented engineers I've worked with. The attention to detail in automation workflows is outstanding.",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    role: "Product Manager",
+    content: "Delivered the project ahead of schedule and with features we hadn't even thought of but absolutely needed.",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
+  },
+  {
+    id: 3,
+    name: "Emily Davis",
+    role: "Tech Lead",
+    content: "The dark mode implementation and glassmorphism effects are top-notch. A visually stunning portfolio.",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
+  }
+];
