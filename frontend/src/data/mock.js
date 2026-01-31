@@ -83,7 +83,7 @@ export const siteConfig = {
 // ---------------------------------------------------------------------------
 export const personalInfo = {
   name: "Md Asif",
-  title: "Full-Stack Developer & Automation Enthusiast",
+  title: "AI Automation Engineer",
   bio: "I automate workflows and build fast, scalable applications for businesses. Passionate about clean code, AI tools, and creating delightful user experiences.",
   email: "mdasifinit@gmail.com",
   location: "Bengaluru, IN",
@@ -212,6 +212,33 @@ export const projects = [
     liveUrl: null,
     githubUrl: "https://github.com/MdAsifInIT/EZ-PS-Automations",
     featured: false,
+  },
+  {
+    id: 5,
+    title: "NotebookLM for Windows",
+    category: "Apps",
+    description:
+      "A native-like wrapper for Google's NotebookLM, providing a seamless desktop experience with immersive dark mode and distraction-free environment.",
+    techStack: [
+      "C#",
+      ".NET 8",
+      "WebView2",
+      "Windows App SDK",
+    ],
+    image: "/notebooklm_wrapper_showcase_1769845180039.png",
+    liveUrl: null,
+    githubUrl: "https://github.com/MdAsifInIT/NotebookLMWrapper",
+    featured: true,
+    details: {
+      problem:
+        "Users want a dedicated desktop experience for NotebookLM without browser clutter.",
+      features: [
+        "Native Look & Feel with Immersive Dark Mode.",
+        "Distraction-free (no address bars/tabs).",
+        "Lightweight (WebView2 based).",
+      ],
+      outcomes: "Improved user focus and native OS integration.",
+    },
   },
 ];
 
