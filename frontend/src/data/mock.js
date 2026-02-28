@@ -324,30 +324,113 @@ export const openSourceRepos = [
 // SKILLS
 // ---------------------------------------------------------------------------
 export const skills = {
-  "Packaging & Deployment": [
-    "MSIX & MSIX Packaging",
-    "CI/CD Pipelines",
-    "AWS, AZURE & Cloud Services",
-    "PowerShell 7",
-    "PSAppDeployToolkit",
-    "SCCM & Intune",
+  "AI & Automation": [
+    {
+      name: "Prompt Engineering",
+      description: "Techniques for crafting effective prompts to communicate with large language models, optimizing output quality and relevance.",
+      url: "https://platform.openai.com/docs/guides/prompt-engineering"
+    },
+    {
+      name: "RAG (Retrieval-Augmented Generation)",
+      description: "Architecture that combines information retrieval with text generation, allowing LLMs to answer questions using external knowledge bases.",
+      url: "https://www.ibm.com/topics/retrieval-augmented-generation"
+    },
+    {
+      name: "LLM API Integration",
+      description: "Connecting applications to Large Language Models via APIs like OpenAI, Anthropic, or local models to add intelligent features.",
+      url: "https://platform.openai.com/docs/api-reference"
+    },
+    {
+      name: "Workflow Automation (n8n)",
+      description: "Building resilient, multi-step automated workflows with n8n to connect various services and APIs.",
+      url: "https://n8n.io/"
+    },
+    {
+      name: "Agent-Based Development",
+      description: "Designing and implementing autonomous AI agents capable of planning, using tools, and achieving complex goals.",
+      url: "https://www.langchain.com/agents"
+    },
   ],
-  "Scripting & Automation": [
-    "Bash & Shell",
-    "Python Scripts",
-    "PowerShell Scripting",
-    "GitHub Actions",
-    "Automation Testing",
-    "Build Tools",
+  "Packaging & Deployment": [
+    {
+      name: "MSIX Packaging",
+      description: "Creating modern Windows application packages using the MSIX format for reliable and clean installations.",
+      url: "https://learn.microsoft.com/en-us/windows/msix/"
+    },
+    {
+      name: "PSAppDeployToolkit",
+      description: "Framework for wrapping and automating enterprise application installations using PowerShell.",
+      url: "https://psappdeploytoolkit.com/"
+    },
+    {
+      name: "SCCM & Intune",
+      description: "Managing and deploying applications and configurations across enterprise device fleets using Microsoft Endpoint Manager.",
+      url: "https://learn.microsoft.com/en-us/mem/"
+    },
+    {
+      name: "CI/CD (GitHub Actions)",
+      description: "Automating software build, test, and deployment pipelines using continuous integration and delivery practices.",
+      url: "https://github.com/features/actions"
+    },
+    {
+      name: "Cloud Services (AWS, Azure)",
+      description: "Deploying and managing scalable applications and infrastructure on major public cloud platforms.",
+      url: "https://aws.amazon.com/"
+    },
+  ],
+  "Scripting": [
+    {
+      name: "PowerShell",
+      description: "Task automation and configuration management framework developed by Microsoft, consisting of a command-line shell and scripting language.",
+      url: "https://learn.microsoft.com/en-us/powershell/"
+    },
+    {
+      name: "Bash & Shell",
+      description: "Writing scripts to automate tasks and manage systems in Unix-like environments.",
+      url: "https://www.gnu.org/software/bash/"
+    },
+    {
+      name: "Python",
+      description: "High-level programming language used for scripting, data analysis, AI, and automation.",
+      url: "https://www.python.org/"
+    },
+    {
+      name: "C# & .NET",
+      description: "Developing modern, scalable, and high-performance applications across multiple platforms using Microsoft's ecosystem.",
+      url: "https://dotnet.microsoft.com/"
+    },
   ],
   "Development & Tooling": [
-    "Vibe Coding",
-    "Agent-Based Development",
-    "Web Development (React, Next.js)",
-    ".Net, C# & WinForms",
-    "GraphQL & REST APIs",
-    "Git & Version Control",
-    "Visual Studio & VS Code",
+    {
+      name: "React & Next.js",
+      description: "Building interactive, performant, and SEO-friendly user interfaces and web applications.",
+      url: "https://nextjs.org/"
+    },
+    {
+      name: "REST APIs & GraphQL",
+      description: "Designing and consuming web application interfaces for efficient data exchange between front-end and back-end systems.",
+      url: "https://graphql.org/"
+    },
+    {
+      name: "Automation Testing",
+      description: "Writing scripts to programmatically execute tests against software applications to ensure quality and prevent regressions.",
+      url: "https://www.cypress.io/"
+    },
+    {
+      name: "Build Tools",
+      description: "Configuring and using tools like Webpack, Vite, or MSBuild to compile, bundle, and optimize software projects.",
+      url: "https://vitejs.dev/"
+    },
+    {
+      name: "Git & Version Control",
+      description: "Tracking changes in source code during software development and coordinating work among programmers.",
+      url: "https://git-scm.com/"
+    },
+    {
+      name: "Visual Studio & VS Code",
+      description: "Proficiency with rich Integrated Development Environments for writing, debugging, and managing code.",
+      url: "https://code.visualstudio.com/"
+    },
   ],
 };
 

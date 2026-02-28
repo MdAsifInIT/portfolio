@@ -1,12 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Briefcase, GraduationCap } from 'lucide-react';
 import { skills, timeline, siteConfig } from '../data/mock';
+import SkillModal from './SkillModal';
 
 const About = () => {
   const [visibleTimeline, setVisibleTimeline] = useState([]);
   const timelineRefs = useRef([]);
   const skillsRef = useRef(null);
   const [skillsVisible, setSkillsVisible] = useState(false);
+  const [selectedSkill, setSelectedSkill] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSkillClick = (skill, category) => {
+    setSelectedSkill(skill);
+    setSelectedCategory(category);
+    setIsModalOpen(true);
+  };
 
   useEffect(() => {
     const timelineObserver = new IntersectionObserver(
@@ -74,16 +84,15 @@ const About = () => {
             {timeline.map((item, index) => {
               const isEven = index % 2 === 0;
               const Icon = item.type === 'education' ? GraduationCap : Briefcase;
-              
+
               return (
                 <div
                   key={index}
                   ref={(el) => (timelineRefs.current[index] = el)}
-                  className={`relative mb-12 ${
-                    visibleTimeline.includes(index)
+                  className={`relative mb-12 ${visibleTimeline.includes(index)
                       ? 'opacity-100 translate-x-0'
                       : `opacity-0 ${isEven ? '-translate-x-8' : 'translate-x-8'}`
-                  } transition-all duration-700 ease-out`}
+                    } transition-all duration-700 ease-out`}
                   style={{
                     transitionDelay: `${index * 150}ms`
                   }}
@@ -111,9 +120,8 @@ const About = () => {
                   </div>
 
                   {/* Desktop Layout: Alternating sides */}
-                  <div className={`hidden md:flex items-center ${
-                    isEven ? 'flex-row' : 'flex-row-reverse'
-                  }`}>
+                  <div className={`hidden md:flex items-center ${isEven ? 'flex-row' : 'flex-row-reverse'
+                    }`}>
                     {/* Content */}
                     <div className={`w-5/12 ${isEven ? 'text-right pr-10' : 'text-left pl-10'}`}>
                       <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
@@ -154,15 +162,14 @@ const About = () => {
             {siteConfig.about.skillsTitle}
             <span className="w-12 h-1 bg-blue-600 rounded-full"></span>
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {Object.entries(skills).map(([category, skillList], categoryIndex) => (
               <div
                 key={category}
-                className={`bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-2xl hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-500 ${
-                  skillsVisible
+                className={`bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-2xl hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-500 ${skillsVisible
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-8'
-                }`}
+                  }`}
                 style={{
                   transitionDelay: skillsVisible ? `${categoryIndex * 150}ms` : '0ms'
                 }}
@@ -173,11 +180,12 @@ const About = () => {
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {skillList.map((skill, skillIndex) => (
-                    <span
+                     <span
                       key={skillIndex}
-                      className="inline-block px-4 py-2 bg-gray-50 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 cursor-default border border-gray-100 dark:border-gray-600/50"
+                      onClick={() => handleSkillClick(skill, category)}
+                      className="inline-block px-4 py-2 bg-gray-50 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 cursor-pointer border border-gray-100 dark:border-gray-600/50 shadow-sm hover:shadow-md"
                     >
-                      {skill}
+                      {skill.name}
                     </span>
                   ))}
                 </div>
@@ -186,6 +194,13 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      <SkillModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        skill={selectedSkill}
+        category={selectedCategory} 
+      />
     </section>
   );
 };
