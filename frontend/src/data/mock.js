@@ -57,7 +57,7 @@ export const siteConfig = {
     ui: {
       featuredLabel: "Featured",
       viewDetailsLabel: "View Details",
-    }
+    },
   },
 
   // Open Source Section Configuration
@@ -194,7 +194,7 @@ export const projects = [
       role: "Creator & Maintainer",
       features: [
         "Responsive design with Tailwind CSS for optimal viewing on all devices",
-      ]
+      ],
     },
   },
   {
@@ -224,13 +224,9 @@ export const projects = [
     category: "Apps",
     description:
       "A native-like wrapper for Google's NotebookLM, providing a seamless desktop experience with immersive dark mode and distraction-free environment.",
-    techStack: [
-      "C#",
-      ".NET 8",
-      "WebView2",
-      "Windows App SDK",
-    ],
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1170&auto=format&fit=crop",
+    techStack: ["C#", ".NET 8", "WebView2", "Windows App SDK"],
+    image:
+      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1170&auto=format&fit=crop",
     liveUrl: null,
     githubUrl: "https://github.com/MdAsifInIT/NotebookLMWrapper",
     featured: true,
@@ -308,72 +304,85 @@ export const skills = {
   "AI & Automation": [
     {
       name: "Prompt Engineering",
-      description: "Techniques for crafting effective prompts to communicate with large language models, optimizing output quality and relevance.",
-      url: "https://platform.openai.com/docs/guides/prompt-engineering"
+      description:
+        "Techniques for crafting effective prompts to communicate with large language models, optimizing output quality and relevance.",
+      url: "https://platform.openai.com/docs/guides/prompt-engineering",
     },
     {
       name: "RAG (Retrieval-Augmented Generation)",
-      description: "Architecture that combines information retrieval with text generation, allowing LLMs to answer questions using external knowledge bases.",
-      url: "https://www.ibm.com/topics/retrieval-augmented-generation"
+      description:
+        "Architecture that combines information retrieval with text generation, allowing LLMs to answer questions using external knowledge bases.",
+      url: "https://www.ibm.com/topics/retrieval-augmented-generation",
     },
     {
       name: "LLM API Integration",
-      description: "Connecting applications to Large Language Models via APIs like OpenAI, Anthropic, or local models to add intelligent features.",
-      url: "https://platform.openai.com/docs/api-reference"
+      description:
+        "Connecting applications to Large Language Models via APIs like OpenAI, Anthropic, or local models to add intelligent features.",
+      url: "https://platform.openai.com/docs/api-reference",
     },
     {
       name: "Workflow Automation (n8n)",
-      description: "Building resilient, multi-step automated workflows with n8n to connect various services and APIs.",
-      url: "https://n8n.io/"
+      description:
+        "Building resilient, multi-step automated workflows with n8n to connect various services and APIs.",
+      url: "https://n8n.io/",
     },
     {
       name: "Agent-Based Development",
-      description: "Designing and implementing autonomous AI agents capable of planning, using tools, and achieving complex goals.",
-      url: "https://www.langchain.com/agents"
+      description:
+        "Designing and implementing autonomous AI agents capable of planning, using tools, and achieving complex goals.",
+      url: "https://www.langchain.com/agents",
     },
   ],
   "Enterprise Packaging": [
     {
       name: "AdminStudio",
-      description: "Comprehensive automated application packaging tool for preparing reliable MSI, MSIX, and App-V packages for enterprise deployment.",
-      url: "https://www.flexera.com/products/adminstudio"
+      description:
+        "Comprehensive automated application packaging tool for preparing reliable MSI, MSIX, and App-V packages for enterprise deployment.",
+      url: "https://www.flexera.com/products/adminstudio",
     },
     {
       name: "MSIX Packaging",
-      description: "Creating modern Windows application packages using the MSIX format for reliable and clean installations.",
-      url: "https://learn.microsoft.com/en-us/windows/msix/"
+      description:
+        "Creating modern Windows application packages using the MSIX format for reliable and clean installations.",
+      url: "https://learn.microsoft.com/en-us/windows/msix/",
     },
     {
       name: "PSAppDeployToolkit",
-      description: "Framework for wrapping and automating enterprise application installations using PowerShell.",
-      url: "https://psappdeploytoolkit.com/"
+      description:
+        "Framework for wrapping and automating enterprise application installations using PowerShell.",
+      url: "https://psappdeploytoolkit.com/",
     },
     {
       name: "SCCM & Intune",
-      description: "Managing and deploying applications and configurations across enterprise device fleets using Microsoft Endpoint Manager.",
-      url: "https://learn.microsoft.com/en-us/mem/"
+      description:
+        "Managing and deploying applications and configurations across enterprise device fleets using Microsoft Endpoint Manager.",
+      url: "https://learn.microsoft.com/en-us/mem/",
     },
   ],
   "Programming & Scripting": [
     {
       name: "C# & .NET",
-      description: "Developing modern, scalable, and high-performance applications across multiple platforms using Microsoft's ecosystem.",
-      url: "https://dotnet.microsoft.com/"
+      description:
+        "Developing modern, scalable, and high-performance applications across multiple platforms using Microsoft's ecosystem.",
+      url: "https://dotnet.microsoft.com/",
     },
     {
       name: "Python",
-      description: "High-level programming language used for scripting, data analysis, AI, and automation.",
-      url: "https://www.python.org/"
+      description:
+        "High-level programming language used for scripting, data analysis, AI, and automation.",
+      url: "https://www.python.org/",
     },
     {
       name: "PowerShell",
-      description: "Task automation and configuration management framework developed by Microsoft, consisting of a command-line shell and scripting language.",
-      url: "https://learn.microsoft.com/en-us/powershell/"
+      description:
+        "Task automation and configuration management framework developed by Microsoft, consisting of a command-line shell and scripting language.",
+      url: "https://learn.microsoft.com/en-us/powershell/",
     },
     {
       name: "Bash & Shell",
-      description: "Writing scripts to automate tasks and manage systems in Unix-like environments.",
-      url: "https://www.gnu.org/software/bash/"
+      description:
+        "Writing scripts to automate tasks and manage systems in Unix-like environments.",
+      url: "https://www.gnu.org/software/bash/",
     },
   ],
   // "Web Development": [
@@ -391,38 +400,45 @@ export const skills = {
   "DevOps & Tools": [
     {
       name: "Docker",
-      description: "Developing, shipping, and running isolated and scalable applications using containerization technology.",
-      url: "https://www.docker.com/"
+      description:
+        "Developing, shipping, and running isolated and scalable applications using containerization technology.",
+      url: "https://www.docker.com/",
     },
     {
       name: "CI/CD (GitHub Actions)",
-      description: "Automating software build, test, and deployment pipelines using continuous integration and delivery practices.",
-      url: "https://github.com/features/actions"
+      description:
+        "Automating software build, test, and deployment pipelines using continuous integration and delivery practices.",
+      url: "https://github.com/features/actions",
     },
     {
       name: "Cloud Services (AWS, Azure)",
-      description: "Deploying and managing scalable applications and infrastructure on major public cloud platforms.",
-      url: "https://aws.amazon.com/"
+      description:
+        "Deploying and managing scalable applications and infrastructure on major public cloud platforms.",
+      url: "https://aws.amazon.com/",
     },
     {
       name: "Git & Version Control",
-      description: "Tracking changes in source code during software development and coordinating work among programmers.",
-      url: "https://git-scm.com/"
+      description:
+        "Tracking changes in source code during software development and coordinating work among programmers.",
+      url: "https://git-scm.com/",
     },
     {
       name: "Automation Testing",
-      description: "Writing scripts to programmatically execute tests against software applications to ensure quality and prevent regressions.",
-      url: "https://www.cypress.io/"
+      description:
+        "Writing scripts to programmatically execute tests against software applications to ensure quality and prevent regressions.",
+      url: "https://www.cypress.io/",
     },
     {
       name: "Build Tools",
-      description: "Configuring and using tools like Webpack, Vite, or MSBuild to compile, bundle, and optimize software projects.",
-      url: "https://vitejs.dev/"
+      description:
+        "Configuring and using tools like Webpack, Vite, or MSBuild to compile, bundle, and optimize software projects.",
+      url: "https://vitejs.dev/",
     },
     {
       name: "Visual Studio & VS Code",
-      description: "Proficiency with rich Integrated Development Environments for writing, debugging, and managing code.",
-      url: "https://code.visualstudio.com/"
+      description:
+        "Proficiency with rich Integrated Development Environments for writing, debugging, and managing code.",
+      url: "https://code.visualstudio.com/",
     },
   ],
 };
@@ -500,21 +516,27 @@ export const testimonials = [
     id: 1,
     name: "Sarah Johnson",
     role: "Senior Developer",
-    content: "One of the most talented engineers I've worked with. The attention to detail in automation workflows is outstanding.",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+    content:
+      "One of the most talented engineers I've worked with. The attention to detail in automation workflows is outstanding.",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
   },
   {
     id: 2,
     name: "Michael Chen",
     role: "Product Manager",
-    content: "Delivered the project ahead of schedule and with features we hadn't even thought of but absolutely needed.",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
+    content:
+      "Delivered the project ahead of schedule and with features we hadn't even thought of but absolutely needed.",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
   },
   {
     id: 3,
     name: "Emily Davis",
     role: "Tech Lead",
-    content: "The dark mode implementation and glassmorphism effects are top-notch. A visually stunning portfolio.",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
-  }
+    content:
+      "The dark mode implementation and glassmorphism effects are top-notch. A visually stunning portfolio.",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
+  },
 ];
