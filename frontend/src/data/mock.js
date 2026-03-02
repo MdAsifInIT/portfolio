@@ -167,7 +167,7 @@ export const projects = [
         "LLM-generated manifest and silent-install candidates (temperature 0, schema-validated)",
         "PSADT Deploy-Application.ps1 generation with verification ladder",
         "Automated branch/PR creation with labels and audit artifacts",
-        "Jenkins pipeline on Windows agents/ephemeral VMs",
+        "Jenkins/Github Actions pipeline on Windows agents/ephemeral VMs",
         "Layered verification via run-candidate-tests.ps1 (MSI code, paths, shortcuts, smoke)",
       ],
       outcomes:
@@ -192,8 +192,7 @@ export const projects = [
       role: "Creator & Maintainer",
       features: [
         "Responsive design with Tailwind CSS for optimal viewing on all devices",
-      ],
-      outcomes: "5K+ GitHub stars, 500+ daily active users.",
+      ]
     },
   },
   {
@@ -216,26 +215,6 @@ export const projects = [
     liveUrl: "",
     githubUrl: "https://github.com/MdAsifInIT/Inventory-Solutions-4-Business-3",
     featured: true,
-  },
-  {
-    id: 4,
-    title: "EZ-PS-Automations",
-    category: "Scripts",
-    description:
-      "A comprehensive collection of PowerShell automation tools for Windows system administration and enterprise deployments — includes browser extension deployment, Intunewin conversion tooling, system-context launchers, and user/registry utilities. Designed for SCCM and Intune workflows.",
-    techStack: [
-      "PowerShell",
-      "Batch / .bat",
-      "PSExec",
-      "Windows (Registry/Group Policy)",
-      "SCCM",
-      "Intune",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200&h=800&fit=crop",
-    liveUrl: null,
-    githubUrl: "https://github.com/MdAsifInIT/EZ-PS-Automations",
-    featured: false,
   },
   {
     id: 5,
