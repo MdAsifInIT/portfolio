@@ -334,6 +334,11 @@ export const skills = {
   ],
   "Enterprise Packaging": [
     {
+      name: "AdminStudio",
+      description: "Comprehensive automated application packaging tool for preparing reliable MSI, MSIX, and App-V packages for enterprise deployment.",
+      url: "https://www.flexera.com/products/adminstudio"
+    },
+    {
       name: "MSIX Packaging",
       description: "Creating modern Windows application packages using the MSIX format for reliable and clean installations.",
       url: "https://learn.microsoft.com/en-us/windows/msix/"
@@ -371,18 +376,18 @@ export const skills = {
       url: "https://www.gnu.org/software/bash/"
     },
   ],
-  "Web Development": [
-    {
-      name: "React & Next.js",
-      description: "Building interactive, performant, and SEO-friendly user interfaces and web applications.",
-      url: "https://nextjs.org/"
-    },
-    {
-      name: "REST APIs & GraphQL",
-      description: "Designing and consuming web application interfaces for efficient data exchange between front-end and back-end systems.",
-      url: "https://graphql.org/"
-    },
-  ],
+  // "Web Development": [
+  //   {
+  //     name: "React & Next.js",
+  //     description: "Building interactive, performant, and SEO-friendly user interfaces and web applications.",
+  //     url: "https://nextjs.org/"
+  //   },
+  //   {
+  //     name: "REST APIs & GraphQL",
+  //     description: "Designing and consuming web application interfaces for efficient data exchange between front-end and back-end systems.",
+  //     url: "https://graphql.org/"
+  //   },
+  // ],
   "DevOps & Tools": [
     {
       name: "Docker",
