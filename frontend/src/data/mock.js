@@ -142,7 +142,7 @@ export const socialLinks = [
 export const projects = [
   {
     id: 1,
-    title: "Packaging Workflow Automation",
+    title: "AICP (AI CoPackager)",
     category: "Tools",
     description:
       "AI-assisted Windows application packaging pipeline that generates PSADT scripts, opens PRs, and verifies installs on ephemeral VMs.",
@@ -174,6 +174,39 @@ export const projects = [
       ],
       outcomes:
         "Standardized, auditable packaging with reproducible CI; safe auto-merge gated by schema validation, confidence thresholds, and VM verification.",
+    },
+  },
+  {
+    id: 6,
+    title: "Enterprise-Scale VBS to PSADT Migration",
+    category: "Scripts",
+    description:
+      "Large-scale migration of legacy VBScript application packages to structured, standardized PowerShell-based App Deployment Toolkit (PSADT) packages.",
+    techStack: [
+      "PowerShell",
+      "PSAppDeployToolkit",
+      "MECM (SCCM)",
+      "Intune",
+      "Windows Installer",
+      "VBScript",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?q=80&w=1200&auto=format&fit=crop",
+    liveUrl: null,
+    githubUrl: null,
+    featured: true,
+    details: {
+      problem:
+        "The application packaging environment relied on legacy VBScript deployments that were hard to maintain, less secure, lacked modern error handling, and didn't align with Microsoft ecosystem standards.",
+      role: "Migration Engineer & PowerShell Developer",
+      features: [
+        "Analyzed legacy VBS logic to extract custom business rules, installation, uninstallation, and repair routines",
+        "Translated VBS logic into standardized PowerShell logic using PSADT (Deploy-Application.ps1)",
+        "Implemented structured phases (Install/Uninstall/Repair) with standard exit codes, robust error handling, and enterprise-grade logging",
+        "Validated silent installation switches and aligned detection methods with MECM/Intune deployment models",
+      ],
+      outcomes:
+        "Expected to complete the migration of the application packages to eliminate technical debt, improve deployment reliability, maintainability, and scalability. This transitions the infrastructure to a PowerShell-first ecosystem, enabling future automation and CI/CD packaging workflows.",
     },
   },
   {
