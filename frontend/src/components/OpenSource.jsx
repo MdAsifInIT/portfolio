@@ -36,11 +36,10 @@ const OpenSource = () => {
             <button
               key={language}
               onClick={() => setSelectedLanguage(language)}
-              className={`px-5 py-2.5 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
-                selectedLanguage === language
+              className={`px-5 py-2.5 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${selectedLanguage === language
                   ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900 shadow-lg'
                   : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-              }`}
+                }`}
             >
               {language}
             </button>
@@ -50,7 +49,7 @@ const OpenSource = () => {
         {/* Repos Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredRepos.map((repo, index) => (
-            <RepoCard key={repo.id} repo={repo} index={index} />
+            <RepoCard key={repo.id} repo={repo} index={index} showStats={siteConfig.sections.showRepoStats || siteConfig.openSource.showStats} />
           ))}
         </div>
 

@@ -14,6 +14,7 @@ export const siteConfig = {
     showAbout: true,
     showFooter: true,
     showTestimonials: false,
+    showRepoStats: false, // Toggles stars and forks visibility across the site
   },
 
   // Centralized UI Strings & Labels
@@ -67,7 +68,8 @@ export const siteConfig = {
     githubProfileUrl: "https://github.com/mdasifinit",
     ui: {
       buttonText: "View All on GitHub",
-    }
+    },
+    showStats: false, // Toggles stars and forks visibility locally for this section
   },
 
   // About Section Configuration
@@ -330,7 +332,7 @@ export const skills = {
       url: "https://www.langchain.com/agents"
     },
   ],
-  "Packaging & Deployment": [
+  "Enterprise Packaging": [
     {
       name: "MSIX Packaging",
       description: "Creating modern Windows application packages using the MSIX format for reliable and clean installations.",
@@ -346,18 +348,18 @@ export const skills = {
       description: "Managing and deploying applications and configurations across enterprise device fleets using Microsoft Endpoint Manager.",
       url: "https://learn.microsoft.com/en-us/mem/"
     },
-    {
-      name: "CI/CD (GitHub Actions)",
-      description: "Automating software build, test, and deployment pipelines using continuous integration and delivery practices.",
-      url: "https://github.com/features/actions"
-    },
-    {
-      name: "Cloud Services (AWS, Azure)",
-      description: "Deploying and managing scalable applications and infrastructure on major public cloud platforms.",
-      url: "https://aws.amazon.com/"
-    },
   ],
-  "Scripting": [
+  "Programming & Scripting": [
+    {
+      name: "C# & .NET",
+      description: "Developing modern, scalable, and high-performance applications across multiple platforms using Microsoft's ecosystem.",
+      url: "https://dotnet.microsoft.com/"
+    },
+    {
+      name: "Python",
+      description: "High-level programming language used for scripting, data analysis, AI, and automation.",
+      url: "https://www.python.org/"
+    },
     {
       name: "PowerShell",
       description: "Task automation and configuration management framework developed by Microsoft, consisting of a command-line shell and scripting language.",
@@ -368,18 +370,8 @@ export const skills = {
       description: "Writing scripts to automate tasks and manage systems in Unix-like environments.",
       url: "https://www.gnu.org/software/bash/"
     },
-    {
-      name: "Python",
-      description: "High-level programming language used for scripting, data analysis, AI, and automation.",
-      url: "https://www.python.org/"
-    },
-    {
-      name: "C# & .NET",
-      description: "Developing modern, scalable, and high-performance applications across multiple platforms using Microsoft's ecosystem.",
-      url: "https://dotnet.microsoft.com/"
-    },
   ],
-  "Development & Tooling": [
+  "Web Development": [
     {
       name: "React & Next.js",
       description: "Building interactive, performant, and SEO-friendly user interfaces and web applications.",
@@ -390,6 +382,28 @@ export const skills = {
       description: "Designing and consuming web application interfaces for efficient data exchange between front-end and back-end systems.",
       url: "https://graphql.org/"
     },
+  ],
+  "DevOps & Tools": [
+    {
+      name: "Docker",
+      description: "Developing, shipping, and running isolated and scalable applications using containerization technology.",
+      url: "https://www.docker.com/"
+    },
+    {
+      name: "CI/CD (GitHub Actions)",
+      description: "Automating software build, test, and deployment pipelines using continuous integration and delivery practices.",
+      url: "https://github.com/features/actions"
+    },
+    {
+      name: "Cloud Services (AWS, Azure)",
+      description: "Deploying and managing scalable applications and infrastructure on major public cloud platforms.",
+      url: "https://aws.amazon.com/"
+    },
+    {
+      name: "Git & Version Control",
+      description: "Tracking changes in source code during software development and coordinating work among programmers.",
+      url: "https://git-scm.com/"
+    },
     {
       name: "Automation Testing",
       description: "Writing scripts to programmatically execute tests against software applications to ensure quality and prevent regressions.",
@@ -399,11 +413,6 @@ export const skills = {
       name: "Build Tools",
       description: "Configuring and using tools like Webpack, Vite, or MSBuild to compile, bundle, and optimize software projects.",
       url: "https://vitejs.dev/"
-    },
-    {
-      name: "Git & Version Control",
-      description: "Tracking changes in source code during software development and coordinating work among programmers.",
-      url: "https://git-scm.com/"
     },
     {
       name: "Visual Studio & VS Code",
@@ -446,7 +455,7 @@ export const timeline = [
     title: "Student",
     company: "DAV Public School",
     description:
-      "Compelted higher secondary education with a focus on science stream.",
+      "Completed higher secondary education with a focus on science stream.",
     type: "education",
   },
 ];

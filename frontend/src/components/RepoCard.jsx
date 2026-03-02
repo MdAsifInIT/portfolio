@@ -7,7 +7,7 @@ const formatDate = (dateString) => {
   const now = new Date();
   const diffTime = Math.abs(now - date);
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  
+
   if (diffDays === 0) return 'Today';
   if (diffDays === 1) return 'Yesterday';
   if (diffDays < 30) return `${diffDays} days ago`;
@@ -15,7 +15,7 @@ const formatDate = (dateString) => {
   return `${Math.floor(diffDays / 365)} years ago`;
 };
 
-const RepoCard = ({ repo, index }) => {
+const RepoCard = ({ repo, index, showStats = true }) => {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
 
   return (
@@ -24,11 +24,10 @@ const RepoCard = ({ repo, index }) => {
       target="_blank"
       rel="noopener noreferrer"
       ref={ref}
-      className={`group block bg-gray-50 dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-2xl p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-900/10 transform hover:-translate-y-1 ${
-        isVisible
+      className={`group block bg-gray-50 dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-500 rounded-2xl p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-900/10 transform hover:-translate-y-1 ${isVisible
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-8'
-      }`}
+        }`}
       style={{
         transitionDelay: isVisible ? `${(index % 2) * 100}ms` : '0ms'
       }}
@@ -64,20 +63,22 @@ const RepoCard = ({ repo, index }) => {
       </div>
 
       {/* Stats */}
-      <div className="flex items-center gap-6 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-800 pt-4">
-        <div className="flex items-center gap-1.5">
-          <Star className="w-4 h-4 text-yellow-500" fill="currentColor" />
-          <span className="font-medium text-gray-700 dark:text-gray-300">{repo.stars.toLocaleString()}</span>
+      {showStats && (
+        <div className="flex items-center gap-6 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-800 pt-4">
+          <div className="flex items-center gap-1.5">
+            <Star className="w-4 h-4 text-yellow-500" fill="currentColor" />
+            <span className="font-medium text-gray-700 dark:text-gray-300">{repo.stars.toLocaleString()}</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <GitFork className="w-4 h-4" />
+            <span className="font-medium text-gray-700 dark:text-gray-300">{repo.forks.toLocaleString()}</span>
+          </div>
+          <div className="flex items-center gap-1.5 ml-auto">
+            <Clock className="w-4 h-4" />
+            <span className="text-xs">{formatDate(repo.lastUpdated)}</span>
+          </div>
         </div>
-        <div className="flex items-center gap-1.5">
-          <GitFork className="w-4 h-4" />
-          <span className="font-medium text-gray-700 dark:text-gray-300">{repo.forks.toLocaleString()}</span>
-        </div>
-        <div className="flex items-center gap-1.5 ml-auto">
-          <Clock className="w-4 h-4" />
-          <span className="text-xs">{formatDate(repo.lastUpdated)}</span>
-        </div>
-      </div>
+      )}
     </a>
   );
 };
