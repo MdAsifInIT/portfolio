@@ -10,7 +10,7 @@ export const siteConfig = {
   sections: {
     showHero: true,
     showProjects: true,
-    showOpenSource: true,
+    showOpenSource: false,
     showAbout: true,
     showFooter: true,
     showTestimonials: false,
@@ -31,7 +31,6 @@ export const siteConfig = {
     navigationItems: [
       { id: "home", label: "Home" },
       { id: "projects", label: "Projects" },
-      { id: "opensource", label: "Open Source" },
       { id: "about", label: "About" },
     ],
     ariaLabels: {
@@ -99,7 +98,6 @@ export const siteConfig = {
     // Dynamic Footer Links
     links: [
       { id: "projects", label: "Projects" },
-      { id: "opensource", label: "Open Source" },
       { id: "about", label: "About" },
     ],
   },
