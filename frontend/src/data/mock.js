@@ -15,6 +15,7 @@ export const siteConfig = {
     showFooter: true,
     showTestimonials: false,
     showRepoStats: false, // Toggles stars and forks visibility across the site
+    showCertifications: true,
   },
 
   // Centralized UI Strings & Labels
@@ -32,6 +33,7 @@ export const siteConfig = {
       { id: "home", label: "Home" },
       { id: "projects", label: "Projects" },
       { id: "about", label: "About" },
+      { id: "certifications", label: "Certifications" },
     ],
     ariaLabels: {
       themeToggle: "Toggle theme",
@@ -80,6 +82,13 @@ export const siteConfig = {
     skillsTitle: "Technical Skills",
   },
 
+  // Certifications Section Configuration
+  certifications: {
+    title: "Certifications",
+    description:
+      "Professional certifications validating my expertise in Microsoft technologies and cloud services.",
+  },
+
   // Contact Configuration
   contact: {
     title: "Get In Touch",
@@ -99,6 +108,7 @@ export const siteConfig = {
     links: [
       { id: "projects", label: "Projects" },
       { id: "about", label: "About" },
+      { id: "certifications", label: "Certifications" },
     ],
   },
 };
@@ -536,6 +546,54 @@ export const contributions = [
     type: "PR",
     title: "Docs: Update stream API examples",
     status: "merged",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// CERTIFICATIONS
+// ---------------------------------------------------------------------------
+export const certifications = [
+  {
+    id: 1,
+    name: "Microsoft Certified: Azure Fundamentals",
+    code: "AZ-900",
+    issuer: "Microsoft",
+    credentialId: "",
+    issueDate: "2025-01",
+    expiryDate: null,
+    credentialUrl: "",
+    badgeImage: "",
+    skills: ["Cloud Concepts", "Azure Services", "Azure Security", "Azure Pricing"],
+    description:
+      "Validates foundational knowledge of cloud services and how those services are provided with Microsoft Azure.",
+  },
+  {
+    id: 2,
+    name: "Microsoft Certified: Azure Administrator Associate",
+    code: "AZ-104",
+    issuer: "Microsoft",
+    credentialId: "",
+    issueDate: "2025-03",
+    expiryDate: null,
+    credentialUrl: "",
+    badgeImage: "",
+    skills: ["Azure AD", "Virtual Networks", "Storage", "Compute", "Monitoring"],
+    description:
+      "Demonstrates expertise in implementing, managing, and monitoring an organization's Microsoft Azure environment.",
+  },
+  {
+    id: 3,
+    name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals",
+    code: "SC-900",
+    issuer: "Microsoft",
+    credentialId: "",
+    issueDate: "2025-02",
+    expiryDate: null,
+    credentialUrl: "",
+    badgeImage: "",
+    skills: ["Security", "Compliance", "Identity", "Microsoft Entra", "Microsoft Defender"],
+    description:
+      "Validates foundational knowledge of security, compliance, and identity across cloud-based and related Microsoft services.",
   },
 ];
 

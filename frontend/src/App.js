@@ -16,6 +16,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 const Projects = lazy(() => import("./components/Projects"));
 const OpenSource = lazy(() => import("./components/OpenSource"));
 const About = lazy(() => import("./components/About"));
+const Certifications = lazy(() => import("./components/Certifications"));
 const Testimonials = lazy(() => import("./components/Testimonials")); // Placeholder
 
 const LoadingFallback = () => (
@@ -38,6 +39,7 @@ const Home = () => {
         {siteConfig.sections.showProjects && <Projects />}
         {siteConfig.sections.showOpenSource && <OpenSource />}
         {siteConfig.sections.showAbout && <About />}
+        {siteConfig.sections.showCertifications && <Certifications />}
 {siteConfig.sections.showTestimonials && <Testimonials />}
       </Suspense>
 
