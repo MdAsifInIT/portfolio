@@ -561,7 +561,7 @@ export const certifications = [
     credentialId: "",
     issueDate: "2024-10",
     expiryDate: null,
-    credentialUrl: "https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification",
+    credentialUrl: null,
     badgeImage: "",
     skills: [
       "Cloud Concepts",
@@ -580,7 +580,7 @@ export const certifications = [
     credentialId: "",
     issueDate: "2024-05",
     expiryDate: null,
-    credentialUrl: "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/?practice-assessment-type=certification",
+    credentialUrl: null,
     badgeImage: "",
     skills: [
       "AI Concepts",
@@ -600,8 +600,7 @@ export const certifications = [
     credentialId: "",
     issueDate: "2026-03",
     expiryDate: "2027-03",
-    credentialUrl:
-      "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification",
+    credentialUrl: null,
     badgeImage: "",
     skills: [
       "Azure OpenAI",
