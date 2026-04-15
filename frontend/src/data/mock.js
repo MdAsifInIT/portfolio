@@ -600,7 +600,8 @@ export const certifications = [
     credentialId: "",
     issueDate: "2026-03",
     expiryDate: "2027-03",
-    credentialUrl: "",
+    credentialUrl:
+      "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification",
     badgeImage: "",
     skills: [
       "Azure OpenAI",
