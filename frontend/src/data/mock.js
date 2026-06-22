@@ -153,118 +153,77 @@ export const projects = [
     title: "AICP (AI CoPackager)",
     category: "Tools",
     description:
-      "AI-assisted Windows application packaging pipeline that generates PSADT scripts, opens PRs, and verifies installs on ephemeral VMs.",
+      "Python-first agentic packaging platform for enterprise Windows deployment teams, with deterministic PSADT generation, GitHub PR automation, and QA gates.",
     techStack: [
-      "Jenkins",
-      "n8n",
-      "PowerShell 7",
+      "Python",
+      "FastAPI",
+      "Temporal",
+      "PostgreSQL",
       "PSAppDeployToolkit",
       "OpenAI API",
-      "JSON Schema",
-      "GitHub",
+      "GitHub Actions",
     ],
     image:
       "https://images.unsplash.com/photo-1743385779347-1549dabf1320?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     liveUrl: null,
-    githubUrl: "https://github.com/mdasifinit/Packaging-Workflow-Automation",
+    githubUrl: "https://github.com/MdAsifInIT/AICP",
     featured: true,
     details: {
       problem:
-        "Manual app packaging is slow, inconsistent, and error-prone—silent switches and post-install verification consume significant engineer time.",
+        "Manual app packaging is slow, inconsistent, and hard to audit, especially when silent switches, PSADT structure, and validation steps vary by package.",
       role: "Lead Developer & Architect",
       features: [
-        "n8n webhook intake with deterministic installer classification",
-        "LLM-generated manifest and silent-install candidates (temperature 0, schema-validated)",
-        "PSADT Deploy-Application.ps1 generation with verification ladder",
-        "Automated branch/PR creation with labels and audit artifacts",
-        "Jenkins/Github Actions pipeline on Windows agents/ephemeral VMs",
-        "Layered verification via run-candidate-tests.ps1 (MSI code, paths, shortcuts, smoke)",
+        "FastAPI intake API with job status, approval, rejection, and artifact lookup",
+        "Temporal workflows for durable analysis, generation, PR creation, QA, and promotion",
+        "Deterministic PSADT rendering from approved templates and validated manifests",
+        "One branch and one PR per package for clear auditability",
+        "Simulated, Hyper-V, or Azure QA providers without locking the product to one execution target",
       ],
       outcomes:
-        "Standardized, auditable packaging with reproducible CI; safe auto-merge gated by schema validation, confidence thresholds, and VM verification.",
-    },
-  },
-  {
-    id: 6,
-    title: "Enterprise-Scale VBS to PSADT Migration",
-    category: "Scripts",
-    description:
-      "Large-scale migration of legacy VBScript application packages to structured, standardized PowerShell-based App Deployment Toolkit (PSADT) packages.",
-    techStack: [
-      "PowerShell",
-      "PSAppDeployToolkit",
-      "MECM (SCCM)",
-      "Intune",
-      "Windows Installer",
-      "VBScript",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?q=80&w=1200&auto=format&fit=crop",
-    liveUrl: null,
-    githubUrl: null,
-    featured: true,
-    details: {
-      problem:
-        "The application packaging environment relied on legacy VBScript deployments that were hard to maintain, less secure, lacked modern error handling, and didn't align with Microsoft ecosystem standards.",
-      role: "Migration Engineer & PowerShell Developer",
-      features: [
-        "Analyzed legacy VBS logic to extract custom business rules, installation, uninstallation, and repair routines",
-        "Translated VBS logic into standardized PowerShell logic using PSADT (Deploy-Application.ps1)",
-        "Implemented structured phases (Install/Uninstall/Repair) with standard exit codes, robust error handling, and enterprise-grade logging",
-        "Validated silent installation switches and aligned detection methods with MECM/Intune deployment models",
-      ],
-      outcomes:
-        "Expected to complete the migration of the application packages to eliminate technical debt, improve deployment reliability, maintainability, and scalability. This transitions the infrastructure to a PowerShell-first ecosystem, enabling future automation and CI/CD packaging workflows.",
+        "Turns packaging into a governed workflow where AI advises, deterministic templates decide, and QA gates control promotion.",
     },
   },
   {
     id: 2,
-    title: "Portfolio Website",
-    category: "Apps",
+    title: "Self-Evolving Transpiler",
+    category: "Tools",
     description:
-      "Personal portfolio website to showcase projects, skills, and open source contributions.",
-    techStack: ["React", "Next.js", "Tailwind CSS", "Vercel"],
+      "An enterprise VBScript-to-PSADT transpiler that combines deterministic mappings, OpenAI structured outputs, and review-gated self-evolving rules.",
+    techStack: [
+      "Python 3.11",
+      "FastAPI",
+      "Pydantic",
+      "OpenAI GPT",
+      "React 19",
+      "Docker",
+      "PSADT",
+    ],
     image:
-      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=755&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
     liveUrl: null,
-    githubUrl: "https://github.com/mdasifinit/portfolio",
+    githubUrl: "https://github.com/MdAsifInIT/Self-Evolving-Transpiler",
     featured: true,
     details: {
       problem:
-        "Lack of a centralized platform to effectively showcase my skills, projects, and open source contributions to potential employers and collaborators.",
+        "Legacy VBScript deployment wrappers are difficult to modernize, and free-form AI translation creates too much risk for enterprise packaging.",
       role: "Creator & Maintainer",
       features: [
-        "Responsive design with Tailwind CSS for optimal viewing on all devices",
+        "Deterministic mapping layer for known VBScript functions",
+        "OpenAI-assisted mapping candidates with review-gated promotion",
+        "Strict Pydantic schemas and structured outputs for predictable translation blocks",
+        "Token-aware execution, PSADT quality controls, and safety validation",
+        "Docker Compose deployment with a React status and usage UI",
       ],
+      outcomes:
+        "Creates PSADT scripts with repeatable rules, safer output, and a path for the transpiler to evolve through reviewable mappings.",
     },
   },
   {
     id: 3,
-    title: "Inventory Solutions 4 Business",
-    category: "Apps",
-    description:
-      "Full-stack inventory management solution with a web client, mobile app, and server API (client, mobile and server directories present). Designed for product/customer/order management and ready for containerized deployment.",
-    techStack: [
-      "JavaScript",
-      "React (web client)",
-      "React Native (mobile)",
-      "Node.js",
-      "Express",
-      "Tailwind CSS",
-      "Docker",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&h=800&fit=crop",
-    liveUrl: "",
-    githubUrl: "https://github.com/MdAsifInIT/Inventory-Solutions-4-Business-3",
-    featured: true,
-  },
-  {
-    id: 5,
     title: "NotebookLM for Windows",
     category: "Apps",
     description:
-      "A native-like wrapper for Google's NotebookLM, providing a seamless desktop experience with immersive dark mode and distraction-free environment.",
+      "A native-like wrapper for Google's NotebookLM, providing a seamless desktop experience with immersive dark mode and distraction-free use.",
     techStack: ["C#", ".NET 8", "WebView2", "Windows App SDK"],
     image:
       "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1170&auto=format&fit=crop",
@@ -275,18 +234,117 @@ export const projects = [
       problem:
         "Users want a dedicated desktop experience for NotebookLM without browser clutter.",
       features: [
-        "Native Look & Feel with Immersive Dark Mode.",
-        "Distraction-free (no address bars/tabs).",
-        "Lightweight (WebView2 based).",
+        "Native look and feel with immersive dark mode",
+        "Distraction-free use without tabs or address bars",
+        "Lightweight WebView2-based shell",
       ],
-      outcomes: "Improved user focus and native OS integration.",
+      outcomes: "Improved focus and native OS integration for a web-first Google experience.",
+    },
+  },
+  {
+    id: 4,
+    title: "PokeSwitch",
+    category: "Apps",
+    description:
+      "A lightweight WPF utility that toggles Docker Desktop, WSL2, and NVIDIA GPU state so developers can reclaim RAM and battery when Docker is idle.",
+    techStack: [
+      "C#",
+      ".NET 10",
+      "WPF",
+      "WPF-UI",
+      "Windows Forms",
+      "PowerShell",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
+    liveUrl: null,
+    githubUrl: "https://github.com/MdAsifInIT/pokeswitch",
+    featured: true,
+    details: {
+      problem:
+        "Docker-heavy Windows dev setups keep WSL and GPU resources alive even when they are not needed.",
+      role: "Creator & Maintainer",
+      features: [
+        "Dashboard with Docker, WSL, container, and vmmem status",
+        "Start and stop flows for WSL keep-alive and Docker Desktop",
+        "Nuclear shutdown path to reclaim memory quickly",
+        "NVIDIA GPU toggle with guardrails for device matching",
+        "Tray quick actions, diagnostics, and exportable logs",
+      ],
+      outcomes:
+        "Makes it easy to pause a Docker-centric Windows environment and recover laptop resources in a few clicks.",
+    },
+  },
+  {
+    id: 5,
+    title: "NotionLM",
+    category: "Tools",
+    description:
+      "A Notion-to-Google Docs sync pipeline that checkpoints recent edits, renders page content, and upserts into a single Google Doc.",
+    techStack: [
+      "Python",
+      "Notion API",
+      "Google Docs API",
+      "Docker",
+      "OAuth 2.0",
+      "Checkpointing",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+    liveUrl: null,
+    githubUrl: "https://github.com/MdAsifInIT/NotionLM",
+    featured: true,
+    details: {
+      problem:
+        "Manually copying Notion content into Docs is repetitive and easy to duplicate or lose formatting.",
+      role: "Creator & Maintainer",
+      features: [
+        "Queries recently edited Notion pages with checkpoint overlap",
+        "Extracts page text, blocks, and rich properties into syncable entries",
+        "Uses idempotent Google Docs named ranges for upserts",
+        "Keeps atomic state and metrics files for safe repeat runs",
+        "Supports OAuth token refresh for unattended Docker runs",
+      ],
+      outcomes:
+        "Keeps a single Google Doc current from Notion edits while avoiding duplicate content and preserving sync checkpoints.",
+    },
+  },
+  {
+    id: 6,
+    title: "Enterprise Solutions",
+    category: "Apps",
+    description:
+      "Full-stack inventory management solution with a web client, mobile app, and server API. Designed for product, customer, and order management with container-ready deployment.",
+    techStack: [
+      "JavaScript",
+      "React",
+      "React Native",
+      "Node.js",
+      "Express",
+      "Tailwind CSS",
+      "Docker",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&h=800&fit=crop",
+    liveUrl: "",
+    githubUrl: "https://github.com/MdAsifInIT/Inventory-Solutions-4-Business-3",
+    featured: true,
+    details: {
+      problem:
+        "Inventory, customer, and order workflows need a unified system that is easier to extend and deploy across app surfaces.",
+      role: "Creator & Maintainer",
+      features: [
+        "Web client, mobile app, and server API in one repo",
+        "Product, customer, and order management workflows",
+        "Container-friendly structure for future deployment",
+        "Modernized business app foundation for multi-surface use",
+      ],
+      outcomes:
+        "Provides a centralized business operations platform that can be expanded across web, mobile, and server layers.",
     },
   },
 ];
 
-// ---------------------------------------------------------------------------
-// OPEN SOURCE REPOSITORIES
-// ---------------------------------------------------------------------------
 export const openSourceRepos = [
   {
     id: 1,
