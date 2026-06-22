@@ -76,14 +76,15 @@ const About = () => {
   const skillEntries = Object.entries(skills || {});
 
   return (
-    <section id="about" className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="about" className="relative py-24 bg-[linear-gradient(180deg,#f8fafc_0%,#f1f5f9_100%)] dark:bg-[linear-gradient(180deg,#111827_0%,#020617_100%)] transition-colors duration-300 overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent dark:via-white/10"></div>
+      <div className="max-w-7xl mx-auto px-6 relative">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-950 dark:text-white mb-6">
             {siteConfig.about.title}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-8">
             {siteConfig.about.description}
           </p>
         </div>
@@ -91,9 +92,9 @@ const About = () => {
         {/* Timeline */}
         <div className="mb-24">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-12 text-center flex items-center justify-center gap-3">
-            <span className="w-12 h-1 bg-blue-600 rounded-full"></span>
+            <span className="w-12 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full shadow-sm shadow-blue-600/30"></span>
             {siteConfig.about.timelineTitle}
-            <span className="w-12 h-1 bg-blue-600 rounded-full"></span>
+            <span className="w-12 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full shadow-sm shadow-blue-600/30"></span>
           </h3>
           <div className="max-w-4xl mx-auto">
             {timelineItems.map((item, index) => {
@@ -115,21 +116,21 @@ const About = () => {
                   {/* Mobile Layout: Stacked vertically */}
                   <div className="flex md:hidden items-start gap-6">
                     <div className="relative flex flex-col items-center">
-                      <div className="w-12 h-12 bg-blue-600 dark:bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 ring-4 ring-white/90 dark:ring-gray-950">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
                       {index < timelineItems.length - 1 && (
-                        <div className="w-0.5 flex-1 min-h-[60px] bg-gray-200 dark:bg-gray-700 mt-2"></div>
+                        <div className="w-0.5 flex-1 min-h-[60px] bg-gradient-to-b from-blue-200 to-gray-200 dark:from-blue-800 dark:to-gray-800 mt-2"></div>
                       )}
                     </div>
                     <div className="flex-1 pb-8">
-                      <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300">
-                        <span className="inline-block text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                      <div className="bg-white/90 dark:bg-gray-900/80 p-6 rounded-2xl shadow-lg shadow-gray-900/5 dark:shadow-black/25 border border-white/80 dark:border-white/10 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 backdrop-blur-sm">
+                        <span className="inline-block text-sm font-bold text-blue-600 dark:text-blue-400 mb-2">
                           {item.year}
                         </span>
-                        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{item.title}</h4>
+                        <h4 className="text-xl font-extrabold text-gray-950 dark:text-white mb-1">{item.title}</h4>
                         <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-3">{item.company}</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{item.description}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 leading-6">{item.description}</p>
                       </div>
                     </div>
                   </div>
@@ -139,24 +140,24 @@ const About = () => {
                     }`}>
                     {/* Content */}
                     <div className={`w-5/12 ${isEven ? 'text-right pr-10' : 'text-left pl-10'}`}>
-                      <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                        <span className="inline-block text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2">
+                      <div className="bg-white/90 dark:bg-gray-900/80 p-8 rounded-2xl shadow-lg shadow-gray-900/5 dark:shadow-black/25 border border-white/80 dark:border-white/10 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1.5 transition-all duration-300 group backdrop-blur-sm">
+                        <span className="inline-block text-sm font-bold text-blue-600 dark:text-blue-400 mb-2">
                           {item.year}
                         </span>
-                        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{item.title}</h4>
+                        <h4 className="text-xl font-extrabold text-gray-950 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{item.title}</h4>
                         <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-3">{item.company}</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{item.description}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 leading-6">{item.description}</p>
                       </div>
                     </div>
 
                     {/* Center Line & Icon */}
                     <div className="w-2/12 flex justify-center">
                       <div className="relative flex flex-col items-center">
-                        <div className="w-14 h-14 bg-white dark:bg-gray-900 border-4 border-blue-600 dark:border-blue-500 rounded-full flex items-center justify-center z-10 shadow-lg transform hover:scale-110 transition-transform duration-300">
+                        <div className="w-14 h-14 bg-white dark:bg-gray-950 border-4 border-blue-600 dark:border-blue-500 rounded-full flex items-center justify-center z-10 shadow-lg shadow-blue-500/20 transform hover:scale-110 transition-transform duration-300">
                           <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                         </div>
                         {index < timelineItems.length - 1 && (
-                          <div className="w-0.5 h-32 bg-gray-200 dark:bg-gray-700 absolute top-14"></div>
+                          <div className="w-0.5 h-32 bg-gradient-to-b from-blue-200 via-gray-200 to-gray-200 dark:from-blue-800 dark:via-gray-800 dark:to-gray-800 absolute top-14"></div>
                         )}
                       </div>
                     </div>
@@ -173,15 +174,15 @@ const About = () => {
         {/* Skills */}
         <div ref={skillsRef} className="max-w-6xl mx-auto">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-12 text-center flex items-center justify-center gap-3">
-            <span className="w-12 h-1 bg-blue-600 rounded-full"></span>
+            <span className="w-12 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full shadow-sm shadow-blue-600/30"></span>
             {siteConfig.about.skillsTitle}
-            <span className="w-12 h-1 bg-blue-600 rounded-full"></span>
+            <span className="w-12 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full shadow-sm shadow-blue-600/30"></span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {skillEntries.map(([category, skillList], categoryIndex) => (
               <div
                 key={category}
-                className={`bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-2xl hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-500 ${skillsVisible
+                className={`bg-white/90 dark:bg-gray-900/80 p-8 rounded-3xl shadow-[0_18px_45px_rgba(15,23,42,0.07)] dark:shadow-[0_18px_45px_rgba(0,0,0,0.28)] border border-white/80 dark:border-white/10 hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-200 dark:hover:border-blue-500/30 hover:-translate-y-1.5 transition-all duration-500 backdrop-blur-sm ${skillsVisible
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-8'
                   }`}
@@ -189,8 +190,8 @@ const About = () => {
                   transitionDelay: skillsVisible ? `${categoryIndex * 150}ms` : '0ms'
                 }}
               >
-                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-                  <span className="w-2 h-8 bg-blue-600 rounded-full"></span>
+                <h4 className="text-xl font-extrabold text-gray-950 dark:text-white mb-6 flex items-center gap-3">
+                  <span className="w-2 h-8 bg-gradient-to-b from-blue-600 to-cyan-500 rounded-full shadow-sm shadow-blue-600/30"></span>
                   {category}
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -198,7 +199,7 @@ const About = () => {
                      <span
                       key={skillIndex}
                       onClick={() => handleSkillClick(skill, category)}
-                      className="inline-block px-4 py-2 bg-gray-50 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 cursor-pointer border border-gray-100 dark:border-gray-600/50 shadow-sm hover:shadow-md"
+                      className="inline-block px-4 py-2 bg-gray-50/90 dark:bg-white/10 text-gray-700 dark:text-gray-300 text-sm font-semibold rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-200 cursor-pointer border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-md hover:-translate-y-0.5"
                     >
                       {skill.name}
                     </span>

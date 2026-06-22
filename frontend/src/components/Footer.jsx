@@ -17,7 +17,8 @@ const Footer = () => {
   const emailHref = createMailtoHref({ email: personalInfo.email });
 
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="relative bg-[linear-gradient(180deg,#111827_0%,#020617_100%)] text-white py-12 overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent"></div>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About */}
@@ -27,7 +28,7 @@ const Footer = () => {
             {emailHref && (
               <a
                 href={emailHref}
-                className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
+                className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-all duration-200 hover:translate-x-0.5 premium-link-underline"
               >
                 <Mail className="w-4 h-4" />
                 {personalInfo.email}
@@ -43,7 +44,7 @@ const Footer = () => {
                 <li key={link.id}>
                   <button
                     onClick={() => scrollToSection(link.id)}
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 hover:text-white transition-all duration-200 hover:translate-x-0.5 premium-link-underline"
                   >
                     {link.label}
                   </button>
@@ -67,7 +68,7 @@ const Footer = () => {
                     href={socialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                    className="w-10 h-10 bg-white/5 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 border border-white/10 hover:border-blue-400/60 shadow-sm hover:shadow-lg hover:shadow-blue-600/20"
                     aria-label={social.name}
                   >
                     <Icon className="w-5 h-5" />

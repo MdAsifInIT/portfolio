@@ -17,7 +17,7 @@ const FloatingContactButton = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`fixed bottom-8 right-8 z-40 w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 flex items-center justify-center ${
+      className={`fixed bottom-8 right-8 z-40 w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 text-white rounded-full shadow-xl shadow-blue-600/25 hover:shadow-2xl hover:shadow-blue-600/35 transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 active:scale-100 flex items-center justify-center border border-white/20 ${
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
       }`}
       aria-label="Contact"
