@@ -20,13 +20,21 @@ const Projects = () => {
   }, [projectList, selectedCategory]);
 
   useEffect(() => {
-    projectRefs.current = [];
     setVisibleProjects([]);
   }, [selectedCategory]);
 
   useEffect(() => {
+    const refs = projectRefs.current.slice(0, filteredProjects.length);
+    const observedRefs = refs.filter(Boolean);
+    const allProjectIndexes = filteredProjects.map((_, index) => index);
+
     if (!canUseDOM || typeof IntersectionObserver === 'undefined') {
-      setVisibleProjects(filteredProjects.map((_, index) => index));
+      setVisibleProjects(allProjectIndexes);
+      return undefined;
+    }
+
+    if (filteredProjects.length > 0 && observedRefs.length === 0) {
+      setVisibleProjects(allProjectIndexes);
       return undefined;
     }
 
@@ -34,7 +42,7 @@ const Projects = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = projectRefs.current.indexOf(entry.target);
+            const index = refs.indexOf(entry.target);
             if (index !== -1) {
               setVisibleProjects(prev => (
                 prev.includes(index) ? prev : [...prev, index]
@@ -47,7 +55,7 @@ const Projects = () => {
       { threshold: 0.1 }
     );
 
-    projectRefs.current.forEach((ref) => {
+    observedRefs.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
