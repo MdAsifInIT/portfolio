@@ -10,7 +10,7 @@ Modern, responsive developer portfolio built with React and Tailwind. All conten
 - GitHub repo showcase + contributions list
 - Timeline (experience & education)
 - Contact modal + floating button
-- Responsive layout & accessible animations
+- Responsive layout, accessible animations, and defensive browser fallbacks
 
 ## Quick Start
 
@@ -62,14 +62,14 @@ Adjust Tailwind classes in components (Hero, Projects, Header). Primary accent u
 
 ## Tech Stack
 
-React 19 · React Router · Tailwind CSS · Lucide Icons · clsx + tailwind-merge
+React 18 - React Router - Tailwind CSS - Lucide Icons - clsx + tailwind-merge
 
 ## Scripts
 
-`yarn start` dev · `yarn build` prod · `yarn test` tests
+`yarn start` dev, `yarn build` prod, `yarn test` tests
 
 ## License
 
 MIT
 
-Built with ❤️ using React.
+Built with React.

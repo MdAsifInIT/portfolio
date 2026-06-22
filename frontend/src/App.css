@@ -3,6 +3,14 @@ html {
   scroll-behavior: smooth;
 }
 
+.App {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), transparent 34rem),
+    radial-gradient(circle at 85% 8%, rgba(14, 165, 233, 0.08), transparent 30rem),
+    hsl(var(--background));
+}
+
 /* Custom animations */
 @keyframes blob {
   0%, 100% {
@@ -47,6 +55,17 @@ html {
   }
 }
 
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scale(1.025);
+  }
+}
+
 .animate-blob {
   animation: blob 7s infinite;
 }
@@ -68,7 +87,50 @@ html {
 }
 
 .animate-slideUp {
-  animation: slideUp 0.3s ease-out;
+  animation: slideUp 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-softPulse {
+  animation: softPulse 6s ease-in-out infinite;
+}
+
+.premium-surface {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.dark .premium-surface {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 22px 55px rgba(0, 0, 0, 0.36);
+}
+
+.premium-link-underline {
+  background-image: linear-gradient(90deg, currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 220ms ease, color 220ms ease;
+}
+
+.premium-link-underline:hover {
+  background-size: 100% 1px;
+}
+
+button,
+a,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(59, 130, 246, 0.35);
+  outline-offset: 3px;
 }
 
 /* Reduced motion support */

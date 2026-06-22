@@ -2,6 +2,15 @@
 const path = require("path");
 require("dotenv").config();
 
+const safeRequire = (modulePath, featureName) => {
+  try {
+    return require(modulePath);
+  } catch (error) {
+    console.warn(`[CRACO] ${featureName} is enabled but ${modulePath} could not be loaded: ${error.message}`);
+    return null;
+  }
+};
+
 // Environment variable overrides
 const config = {
   disableHotReload: process.env.DISABLE_HOT_RELOAD === "true",
@@ -14,8 +23,14 @@ let babelMetadataPlugin;
 let setupDevServer;
 
 if (config.enableVisualEdits) {
-  babelMetadataPlugin = require("./plugins/visual-edits/babel-metadata-plugin");
-  setupDevServer = require("./plugins/visual-edits/dev-server-setup");
+  babelMetadataPlugin = safeRequire(
+    "./plugins/visual-edits/babel-metadata-plugin",
+    "Visual edits"
+  );
+  setupDevServer = safeRequire(
+    "./plugins/visual-edits/dev-server-setup",
+    "Visual edits"
+  );
 }
 
 // Conditionally load health check modules only if enabled
@@ -24,9 +39,15 @@ let setupHealthEndpoints;
 let healthPluginInstance;
 
 if (config.enableHealthCheck) {
-  WebpackHealthPlugin = require("./plugins/health-check/webpack-health-plugin");
-  setupHealthEndpoints = require("./plugins/health-check/health-endpoints");
-  healthPluginInstance = new WebpackHealthPlugin();
+  WebpackHealthPlugin = safeRequire(
+    "./plugins/health-check/webpack-health-plugin",
+    "Health check"
+  );
+  setupHealthEndpoints = safeRequire(
+    "./plugins/health-check/health-endpoints",
+    "Health check"
+  );
+  healthPluginInstance = WebpackHealthPlugin ? new WebpackHealthPlugin() : null;
 }
 
 const webpackConfig = {
@@ -74,7 +95,7 @@ const webpackConfig = {
 };
 
 // Only add babel plugin if visual editing is enabled
-if (config.enableVisualEdits) {
+if (config.enableVisualEdits && babelMetadataPlugin) {
   webpackConfig.babel = {
     plugins: [babelMetadataPlugin],
   };

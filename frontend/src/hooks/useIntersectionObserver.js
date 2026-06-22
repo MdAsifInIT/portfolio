@@ -1,12 +1,20 @@
 import { useEffect, useState, useRef } from 'react';
+import { canUseDOM } from '../lib/browser';
 
 const useIntersectionObserver = ({ threshold = 0.1, root = null, rootMargin = '0px', triggerOnce = true } = {}) => {
   const [isIntersecting, setIntersecting] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
+    if (!canUseDOM || typeof IntersectionObserver === 'undefined') {
+      setIntersecting(true);
+      return undefined;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
+        if (!entry) return;
+
         if (entry.isIntersecting) {
           setIntersecting(true);
           if (triggerOnce && ref.current) {

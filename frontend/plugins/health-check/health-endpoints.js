@@ -44,25 +44,19 @@ function setupHealthEndpoints(devServer, healthPlugin) {
         hasCompiled: webpackStatus.hasCompiled,
         errors: webpackStatus.errorCount,
         warnings: webpackStatus.warningCount,
-        lastCompileTime: webpackStatus.lastCompileTime
-          ? new Date(webpackStatus.lastCompileTime).toISOString()
-          : null,
-        lastSuccessTime: webpackStatus.lastSuccessTime
-          ? new Date(webpackStatus.lastSuccessTime).toISOString()
-          : null,
+        lastCompileTime: toIsoDate(webpackStatus.lastCompileTime),
+        lastSuccessTime: toIsoDate(webpackStatus.lastSuccessTime),
         compileDuration: webpackStatus.compileDuration
           ? `${webpackStatus.compileDuration}ms`
           : null,
         totalCompiles: webpackStatus.totalCompiles,
-        firstCompileTime: webpackStatus.firstCompileTime
-          ? new Date(webpackStatus.firstCompileTime).toISOString()
-          : null,
+        firstCompileTime: toIsoDate(webpackStatus.firstCompileTime),
       },
       server: {
         nodeVersion: process.version,
         platform: os.platform(),
         arch: os.arch(),
-        cpus: os.cpus().length,
+        cpus: Array.isArray(os.cpus()) ? os.cpus().length : 0,
         memory: {
           heapUsed: formatBytes(memUsage.heapUsed),
           heapTotal: formatBytes(memUsage.heapTotal),
@@ -137,8 +131,8 @@ function setupHealthEndpoints(devServer, healthPlugin) {
     res.json({
       errorCount: webpackStatus.errorCount,
       warningCount: webpackStatus.warningCount,
-      errors: webpackStatus.errors,
-      warnings: webpackStatus.warnings,
+      errors: Array.isArray(webpackStatus.errors) ? webpackStatus.errors : [],
+      warnings: Array.isArray(webpackStatus.warnings) ? webpackStatus.warnings : [],
       state: webpackStatus.state,
     });
   });
@@ -158,9 +152,7 @@ function setupHealthEndpoints(devServer, healthPlugin) {
       lastCompileDuration: webpackStatus.compileDuration
         ? `${webpackStatus.compileDuration}ms`
         : null,
-      firstCompileTime: webpackStatus.firstCompileTime
-        ? new Date(webpackStatus.firstCompileTime).toISOString()
-        : null,
+      firstCompileTime: toIsoDate(webpackStatus.firstCompileTime),
       serverUptime: formatDuration(uptime),
     });
   });
@@ -184,10 +176,10 @@ function setupHealthEndpoints(devServer, healthPlugin) {
  * @returns {string}
  */
 function formatBytes(bytes) {
-  if (bytes === 0) return '0 B';
+  if (!Number.isFinite(bytes) || bytes <= 0) return '0 B';
   const k = 1024;
   const sizes = ['B', 'KB', 'MB', 'GB'];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  const i = Math.min(sizes.length - 1, Math.floor(Math.log(bytes) / Math.log(k)));
   return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
 }
 
@@ -197,7 +189,8 @@ function formatBytes(bytes) {
  * @returns {string}
  */
 function formatDuration(ms) {
-  const seconds = Math.floor(ms / 1000);
+  const safeMs = Number.isFinite(ms) && ms > 0 ? ms : 0;
+  const seconds = Math.floor(safeMs / 1000);
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
 
@@ -208,6 +201,12 @@ function formatDuration(ms) {
   } else {
     return `${seconds}s`;
   }
+}
+
+function toIsoDate(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
 }
 
 module.exports = setupHealthEndpoints;
