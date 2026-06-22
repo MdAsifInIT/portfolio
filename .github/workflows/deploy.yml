@@ -4,15 +4,13 @@ on:
   push:
     branches:
       - main
-      - alpha
-      - dev
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: "pages-${{ github.ref_name }}"
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
@@ -34,52 +32,15 @@ jobs:
         working-directory: ./frontend
         run: yarn install --frozen-lockfile
 
-      - name: Build (main)
-        if: github.ref_name == 'main'
+      - name: Build
         working-directory: ./frontend
         run: yarn build
         env:
           CI: false
           PUBLIC_URL: /portfolio
 
-      - name: Build (alpha)
-        if: github.ref_name == 'alpha'
-        working-directory: ./frontend
-        run: yarn build
-        env:
-          CI: false
-          PUBLIC_URL: /portfolio/alpha
-
-      - name: Build (dev)
-        if: github.ref_name == 'dev'
-        working-directory: ./frontend
-        run: yarn build
-        env:
-          CI: false
-          PUBLIC_URL: /portfolio/dev
-
-      - name: Deploy (main → root)
-        if: github.ref_name == 'main'
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./frontend/build
-          keep_files: true
-
-      - name: Deploy (alpha → /alpha subdirectory)
-        if: github.ref_name == 'alpha'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend/build
-          destination_dir: alpha
-          keep_files: true
-
-      - name: Deploy (dev → /dev subdirectory)
-        if: github.ref_name == 'dev'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend/build
-          destination_dir: dev
-          keep_files: true
