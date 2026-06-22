@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Linkedin, Twitter, Instagram, Youtube, Link as LinkIcon, Mail, Heart } from 'lucide-react';
 import { personalInfo, socialLinks, siteConfig } from '../data/mock';
+import { asArray, createMailtoHref, getSafeExternalUrl, scrollToSection } from '../lib/browser';
 
 const iconMap = {
   Github,
@@ -13,6 +14,7 @@ const iconMap = {
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const emailHref = createMailtoHref({ email: personalInfo.email });
 
   return (
     <footer className="bg-gray-900 text-white py-12">
@@ -22,26 +24,25 @@ const Footer = () => {
           <div>
             <h3 className="text-2xl font-bold mb-4">{personalInfo.name}</h3>
             <p className="text-gray-400 mb-4">{personalInfo.title}</p>
-            <a
-              href={`mailto:${personalInfo.email}`}
-              className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
-            >
-              <Mail className="w-4 h-4" />
-              {personalInfo.email}
-            </a>
+            {emailHref && (
+              <a
+                href={emailHref}
+                className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-200"
+              >
+                <Mail className="w-4 h-4" />
+                {personalInfo.email}
+              </a>
+            )}
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold mb-4">{siteConfig.footer.quickLinksTitle}</h4>
             <ul className="space-y-2">
-              {siteConfig.footer.links.map((link) => (
+              {asArray(siteConfig.footer.links).map((link) => (
                 <li key={link.id}>
                   <button
-                    onClick={() => {
-                      const element = document.getElementById(link.id);
-                      element?.scrollIntoView({ behavior: 'smooth' });
-                    }}
+                    onClick={() => scrollToSection(link.id)}
                     className="text-gray-400 hover:text-white transition-colors duration-200"
                   >
                     {link.label}
@@ -55,12 +56,15 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">{siteConfig.footer.connectTitle}</h4>
             <div className="flex flex-wrap gap-3">
-              {socialLinks.map((social, index) => {
-                const Icon = iconMap[social.icon];
+              {asArray(socialLinks).map((social, index) => {
+                const Icon = iconMap[social.icon] || LinkIcon;
+                const socialUrl = getSafeExternalUrl(social.url);
+                if (!socialUrl) return null;
+
                 return (
                   <a
                     key={index}
-                    href={social.url}
+                    href={socialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"

@@ -20,30 +20,31 @@ const Certifications = lazy(() => import("./components/Certifications"));
 const Testimonials = lazy(() => import("./components/Testimonials")); // Placeholder
 
 const LoadingFallback = () => (
-  <div className="py-20 flex justify-center items-center">
+  <div className="py-20 flex justify-center items-center" role="status" aria-label={siteConfig.ui.common.loading}>
     <div className="w-12 h-12 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
   </div>
 );
 
 const Home = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const sections = siteConfig.sections || {};
 
   return (
     <div className="min-h-screen">
       <SEO />
       <Header />
-      {siteConfig.sections.showHero && <Hero onContactClick={() => setIsContactModalOpen(true)} />}
+      {sections.showHero && <Hero onContactClick={() => setIsContactModalOpen(true)} />}
       <SocialBar />
       
       <Suspense fallback={<LoadingFallback />}>
-        {siteConfig.sections.showProjects && <Projects />}
-        {siteConfig.sections.showOpenSource && <OpenSource />}
-        {siteConfig.sections.showAbout && <About />}
-        {siteConfig.sections.showCertifications && <Certifications />}
-{siteConfig.sections.showTestimonials && <Testimonials />}
+        {sections.showProjects && <Projects />}
+        {sections.showOpenSource && <OpenSource />}
+        {sections.showAbout && <About />}
+        {sections.showCertifications && <Certifications />}
+        {sections.showTestimonials && <Testimonials />}
       </Suspense>
 
-      {siteConfig.sections.showFooter && <Footer />}
+      {sections.showFooter && <Footer />}
       <FloatingContactButton onClick={() => setIsContactModalOpen(true)} />
       <ContactModal
         isOpen={isContactModalOpen}

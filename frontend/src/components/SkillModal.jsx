@@ -1,8 +1,14 @@
 import React from 'react';
 import { X, ExternalLink } from 'lucide-react';
+import useModalControls from '../hooks/useModalControls';
+import { getSafeExternalUrl } from '../lib/browser';
 
 const SkillModal = ({ isOpen, onClose, skill, category }) => {
+    useModalControls(isOpen, onClose);
+
     if (!isOpen || !skill) return null;
+
+    const skillUrl = getSafeExternalUrl(skill.url);
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn">
@@ -41,9 +47,9 @@ const SkillModal = ({ isOpen, onClose, skill, category }) => {
                     </div>
 
                     <div className="pt-8 border-t border-gray-100 dark:border-gray-800">
-                        {skill.url && (
+                        {skillUrl && (
                             <a
-                                href={skill.url}
+                                href={skillUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-colors shadow-lg shadow-blue-500/20"

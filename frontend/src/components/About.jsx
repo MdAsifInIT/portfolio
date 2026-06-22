@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Briefcase, GraduationCap } from 'lucide-react';
 import { skills, timeline, siteConfig } from '../data/mock';
 import SkillModal from './SkillModal';
+import { asArray, canUseDOM } from '../lib/browser';
 
 const About = () => {
   const [visibleTimeline, setVisibleTimeline] = useState([]);
@@ -19,13 +20,24 @@ const About = () => {
   };
 
   useEffect(() => {
+    const timelineItems = asArray(timeline);
+
+    if (!canUseDOM || typeof IntersectionObserver === 'undefined') {
+      setVisibleTimeline(timelineItems.map((_, index) => index));
+      setSkillsVisible(true);
+      return undefined;
+    }
+
     const timelineObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = timelineRefs.current.indexOf(entry.target);
-            if (index !== -1 && !visibleTimeline.includes(index)) {
-              setVisibleTimeline(prev => [...prev, index]);
+            if (index !== -1) {
+              setVisibleTimeline(prev => (
+                prev.includes(index) ? prev : [...prev, index]
+              ));
+              timelineObserver.unobserve(entry.target);
             }
           }
         });
@@ -58,7 +70,10 @@ const About = () => {
     };
   }, []);
 
-  if (!siteConfig.sections.showAbout) return null;
+  if (!siteConfig.sections?.showAbout) return null;
+
+  const timelineItems = asArray(timeline);
+  const skillEntries = Object.entries(skills || {});
 
   return (
     <section id="about" className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
@@ -81,7 +96,7 @@ const About = () => {
             <span className="w-12 h-1 bg-blue-600 rounded-full"></span>
           </h3>
           <div className="max-w-4xl mx-auto">
-            {timeline.map((item, index) => {
+            {timelineItems.map((item, index) => {
               const isEven = index % 2 === 0;
               const Icon = item.type === 'education' ? GraduationCap : Briefcase;
 
@@ -103,7 +118,7 @@ const About = () => {
                       <div className="w-12 h-12 bg-blue-600 dark:bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
-                      {index < timeline.length - 1 && (
+                      {index < timelineItems.length - 1 && (
                         <div className="w-0.5 flex-1 min-h-[60px] bg-gray-200 dark:bg-gray-700 mt-2"></div>
                       )}
                     </div>
@@ -140,7 +155,7 @@ const About = () => {
                         <div className="w-14 h-14 bg-white dark:bg-gray-900 border-4 border-blue-600 dark:border-blue-500 rounded-full flex items-center justify-center z-10 shadow-lg transform hover:scale-110 transition-transform duration-300">
                           <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                         </div>
-                        {index < timeline.length - 1 && (
+                        {index < timelineItems.length - 1 && (
                           <div className="w-0.5 h-32 bg-gray-200 dark:bg-gray-700 absolute top-14"></div>
                         )}
                       </div>
@@ -163,7 +178,7 @@ const About = () => {
             <span className="w-12 h-1 bg-blue-600 rounded-full"></span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {Object.entries(skills).map(([category, skillList], categoryIndex) => (
+            {skillEntries.map(([category, skillList], categoryIndex) => (
               <div
                 key={category}
                 className={`bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-2xl hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-500 ${skillsVisible
@@ -179,7 +194,7 @@ const About = () => {
                   {category}
                 </h4>
                 <div className="flex flex-wrap gap-2">
-                  {skillList.map((skill, skillIndex) => (
+                  {asArray(skillList).map((skill, skillIndex) => (
                      <span
                       key={skillIndex}
                       onClick={() => handleSkillClick(skill, category)}

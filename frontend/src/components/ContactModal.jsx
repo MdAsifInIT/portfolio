@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { X, Mail, User, MessageSquare, Send } from 'lucide-react';
 import { personalInfo, siteConfig } from '../data/mock';
+import useModalControls from '../hooks/useModalControls';
+import { canUseDOM, createMailtoHref } from '../lib/browser';
 
 const ContactModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -9,6 +11,8 @@ const ContactModal = ({ isOpen, onClose }) => {
     message: ''
   });
   const [errors, setErrors] = useState({});
+
+  useModalControls(isOpen, onClose);
 
   if (!isOpen) return null;
 
@@ -39,12 +43,20 @@ const ContactModal = ({ isOpen, onClose }) => {
     e.preventDefault();
     
     if (validateForm()) {
-      // Create mailto link
-      const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      );
-      window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
+      const mailtoHref = createMailtoHref({
+        email: personalInfo.email,
+        subject: `Portfolio Contact from ${formData.name.trim()}`,
+        body: `Name: ${formData.name.trim()}\nEmail: ${formData.email.trim()}\n\nMessage:\n${formData.message.trim()}`,
+      });
+
+      if (!mailtoHref) {
+        setErrors({ form: 'Contact email is unavailable' });
+        return;
+      }
+
+      if (canUseDOM) {
+        window.location.href = mailtoHref;
+      }
       
       // Reset form
       setFormData({ name: '', email: '', message: '' });
@@ -70,7 +82,10 @@ const ContactModal = ({ isOpen, onClose }) => {
       ></div>
 
       {/* Modal */}
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 animate-slideUp">
+      <div
+        className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 animate-slideUp"
+        onClick={(event) => event.stopPropagation()}
+      >
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -91,6 +106,8 @@ const ContactModal = ({ isOpen, onClose }) => {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
+          {errors.form && <p className="text-sm text-red-600">{errors.form}</p>}
+
           {/* Name Field */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">

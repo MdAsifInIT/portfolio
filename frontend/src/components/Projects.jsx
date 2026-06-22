@@ -1,34 +1,45 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { projects, siteConfig } from '../data/mock';
 import ProjectModal from './ProjectModal';
+import { asArray, canUseDOM } from '../lib/browser';
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [filteredProjects, setFilteredProjects] = useState(projects);
   const [visibleProjects, setVisibleProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const projectRefs = useRef([]);
 
-  const categories = siteConfig.projects.categories;
+  const projectList = asArray(projects);
+  const categories = asArray(siteConfig.projects.categories);
+
+  const filteredProjects = useMemo(() => {
+    if (selectedCategory === 'All') return projectList;
+    return projectList.filter(p => p.category === selectedCategory);
+  }, [projectList, selectedCategory]);
 
   useEffect(() => {
-    if (selectedCategory === 'All') {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(projects.filter(p => p.category === selectedCategory));
-    }
+    projectRefs.current = [];
+    setVisibleProjects([]);
   }, [selectedCategory]);
 
   useEffect(() => {
+    if (!canUseDOM || typeof IntersectionObserver === 'undefined') {
+      setVisibleProjects(filteredProjects.map((_, index) => index));
+      return undefined;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const index = projectRefs.current.indexOf(entry.target);
-            if (index !== -1 && !visibleProjects.includes(index)) {
-              setVisibleProjects(prev => [...prev, index]);
+            if (index !== -1) {
+              setVisibleProjects(prev => (
+                prev.includes(index) ? prev : [...prev, index]
+              ));
+              observer.unobserve(entry.target);
             }
           }
         });
@@ -41,7 +52,7 @@ const Projects = () => {
     });
 
     return () => observer.disconnect();
-  }, [filteredProjects, visibleProjects]);
+  }, [filteredProjects]);
 
   const handleProjectClick = (project) => {
     setSelectedProject(project);
@@ -80,20 +91,24 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <div
-              key={project.id}
-              ref={(el) => (projectRefs.current[index] = el)}
-              onClick={() => handleProjectClick(project)}
-              className={`group relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-900/10 transition-all duration-500 cursor-pointer ${
-                visibleProjects.includes(index)
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-12'
-              }`}
-              style={{
-                transitionDelay: visibleProjects.includes(index) ? `${(index % 3) * 100}ms` : '0ms'
-              }}
-            >
+          {filteredProjects.map((project, index) => {
+            const techStack = asArray(project.techStack);
+            const visible = visibleProjects.includes(index);
+
+            return (
+              <div
+                key={project.id ?? `${project.title}-${index}`}
+                ref={(el) => (projectRefs.current[index] = el)}
+                onClick={() => handleProjectClick(project)}
+                className={`group relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-900/10 transition-all duration-500 cursor-pointer ${
+                  visible
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-12'
+                }`}
+                style={{
+                  transitionDelay: visible ? `${(index % 3) * 100}ms` : '0ms'
+                }}
+              >
               {/* Image Container */}
               <div className="relative h-64 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
@@ -137,7 +152,7 @@ const Projects = () => {
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-100 dark:border-gray-700">
-                  {project.techStack.slice(0, 3).map((tech, i) => (
+                  {techStack.slice(0, 3).map((tech, i) => (
                     <span
                       key={i}
                       className="text-xs font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700/50 px-2.5 py-1 rounded-md"
@@ -145,15 +160,16 @@ const Projects = () => {
                       {tech}
                     </span>
                   ))}
-                  {project.techStack.length > 3 && (
+                  {techStack.length > 3 && (
                     <span className="text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-2.5 py-1 rounded-md">
-                      +{project.techStack.length - 3}
+                      +{techStack.length - 3}
                     </span>
                   )}
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

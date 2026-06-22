@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Award, ExternalLink, Calendar } from 'lucide-react';
 import { certifications, siteConfig } from '../data/mock';
 import CertificationModal from './CertificationModal';
+import { asArray, canUseDOM, formatMonthYear } from '../lib/browser';
 
 const Certifications = () => {
   const sectionRef = useRef(null);
@@ -15,6 +16,11 @@ const Certifications = () => {
   };
 
   useEffect(() => {
+    if (!canUseDOM || typeof IntersectionObserver === 'undefined') {
+      setIsVisible(true);
+      return undefined;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -33,14 +39,13 @@ const Certifications = () => {
     return () => observer.disconnect();
   }, []);
 
-  if (!siteConfig.sections.showCertifications) return null;
+  if (!siteConfig.sections?.showCertifications) return null;
 
   const formatDate = (dateStr) => {
-    if (!dateStr) return '';
-    const [year, month] = dateStr.split('-');
-    const date = new Date(year, month - 1);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+    return formatMonthYear(dateStr, 'short');
   };
+
+  const certificationItems = asArray(certifications);
 
   return (
     <section
@@ -63,21 +68,24 @@ const Certifications = () => {
           ref={sectionRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
         >
-          {certifications.map((cert, index) => (
-            <div
-              key={cert.id}
-              onClick={() => handleCertClick(cert)}
-              className={`group relative bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 overflow-hidden cursor-pointer
-                hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-200 dark:hover:border-blue-800 hover:-translate-y-1
-                transition-all duration-500 ${
-                  isVisible
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-8'
-                }`}
-              style={{
-                transitionDelay: isVisible ? `${index * 150}ms` : '0ms',
-              }}
-            >
+          {certificationItems.map((cert, index) => {
+            const skills = asArray(cert.skills);
+
+            return (
+              <div
+                key={cert.id ?? `${cert.name}-${index}`}
+                onClick={() => handleCertClick(cert)}
+                className={`group relative bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 overflow-hidden cursor-pointer
+                  hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-200 dark:hover:border-blue-800 hover:-translate-y-1
+                  transition-all duration-500 ${
+                    isVisible
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-8'
+                  }`}
+                style={{
+                  transitionDelay: isVisible ? `${index * 150}ms` : '0ms',
+                }}
+              >
               {/* Top accent gradient */}
               <div className="h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
 
@@ -116,7 +124,7 @@ const Certifications = () => {
 
                 {/* Skills (first 3) */}
                 <div className="flex flex-wrap gap-1.5 mb-5">
-                  {cert.skills.slice(0, 3).map((skill, i) => (
+                  {skills.slice(0, 3).map((skill, i) => (
                     <span
                       key={i}
                       className="px-2.5 py-1 bg-gray-50 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 text-xs font-medium rounded-md border border-gray-100 dark:border-gray-600/50"
@@ -124,9 +132,9 @@ const Certifications = () => {
                       {skill}
                     </span>
                   ))}
-                  {cert.skills.length > 3 && (
+                  {skills.length > 3 && (
                     <span className="px-2.5 py-1 text-gray-400 dark:text-gray-500 text-xs font-medium">
-                      +{cert.skills.length - 3} more
+                      +{skills.length - 3} more
                     </span>
                   )}
                 </div>
@@ -137,8 +145,9 @@ const Certifications = () => {
                   <ExternalLink className="w-3.5 h-3.5" />
                 </div>
               </div>
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </div>
 

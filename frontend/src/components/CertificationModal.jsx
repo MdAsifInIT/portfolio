@@ -1,36 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { X, ExternalLink, Award, Calendar, Shield } from 'lucide-react';
+import useModalControls from '../hooks/useModalControls';
+import { asArray, formatMonthYear, getSafeExternalUrl } from '../lib/browser';
 
 const CertificationModal = ({ isOpen, onClose, certification }) => {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape') onClose();
-    };
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-    }
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen, onClose]);
+  useModalControls(isOpen, onClose);
 
   if (!isOpen || !certification) return null;
 
   const formatDate = (dateStr) => {
-    if (!dateStr) return 'N/A';
-    const [year, month] = dateStr.split('-');
-    const date = new Date(year, month - 1);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+    return formatMonthYear(dateStr, 'long') || 'N/A';
   };
+
+  const credentialUrl = getSafeExternalUrl(certification.credentialUrl);
+  const skills = asArray(certification.skills);
 
   return (
     <div
@@ -111,13 +94,13 @@ const CertificationModal = ({ isOpen, onClose, certification }) => {
           )}
 
           {/* Skills */}
-          {certification.skills && certification.skills.length > 0 && (
+          {skills.length > 0 && (
             <div>
               <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
                 Skills Validated
               </h4>
               <div className="flex flex-wrap gap-2">
-                {certification.skills.map((skill, index) => (
+                {skills.map((skill, index) => (
                   <span
                     key={index}
                     className="inline-block px-3 py-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-medium rounded-lg border border-blue-100 dark:border-blue-800/50"
@@ -130,9 +113,9 @@ const CertificationModal = ({ isOpen, onClose, certification }) => {
           )}
 
           {/* Verify Button */}
-          {certification.credentialUrl && (
+          {credentialUrl && (
             <a
-              href={certification.credentialUrl}
+              href={credentialUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 w-full justify-center px-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"

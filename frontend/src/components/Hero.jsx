@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Mail } from 'lucide-react';
 import { personalInfo, siteConfig } from '../data/mock';
+import { scrollToSection } from '../lib/browser';
 
 const Hero = ({ onContactClick }) => {
   const heroRef = useRef(null);
@@ -12,29 +13,20 @@ const Hero = ({ onContactClick }) => {
   useEffect(() => {
     // Staggered reveal animation
     const elements = [nameRef.current, titleRef.current, bioRef.current, ctaRef.current];
+    const timers = [];
+
     elements.forEach((el, index) => {
       if (el) {
-        setTimeout(() => {
+        const timerId = setTimeout(() => {
           el.classList.remove('opacity-0', 'translate-y-4');
           el.classList.add('opacity-100', 'translate-y-0');
         }, index * 200 + 100);
+        timers.push(timerId);
       }
     });
-  }, []);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+    return () => timers.forEach(clearTimeout);
+  }, []);
 
   return (
     <section

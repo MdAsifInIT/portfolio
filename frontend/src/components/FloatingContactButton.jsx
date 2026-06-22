@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Mail } from 'lucide-react';
+import { canUseDOM } from '../lib/browser';
+import useRafScroll from '../hooks/useRafScroll';
 
 const FloatingContactButton = ({ onClick }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show button after scrolling down 300px
-      setIsVisible(window.scrollY > 300);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  const handleScroll = useCallback(() => {
+    if (!canUseDOM) return;
+    // Show button after scrolling down 300px
+    setIsVisible(window.scrollY > 300);
   }, []);
+
+  useRafScroll(handleScroll);
 
   return (
     <button

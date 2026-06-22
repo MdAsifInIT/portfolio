@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback, useState } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { siteConfig } from "../data/mock";
 import { useTheme } from "../context/ThemeContext";
+import { asArray, canUseDOM, scrollToSection } from "../lib/browser";
+import useRafScroll from "../hooks/useRafScroll";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,49 +11,36 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+  const navItems = asArray(siteConfig.header.navigationItems);
 
-      // Update active section based on scroll position
-      const sections = siteConfig.header.navigationItems.map(item => item.id);
-      const scrollPosition = window.scrollY + 100;
+  const handleScroll = useCallback(() => {
+    if (!canUseDOM) return;
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(section);
-            break;
-          }
+    setIsScrolled(window.scrollY > 50);
+
+    const scrollPosition = window.scrollY + 100;
+
+    for (const section of navItems.map((item) => item.id).filter(Boolean)) {
+      const element = document.getElementById(section);
+      if (element) {
+        const { offsetTop, offsetHeight } = element;
+        if (
+          scrollPosition >= offsetTop &&
+          scrollPosition < offsetTop + offsetHeight
+        ) {
+          setActiveSection(section);
+          break;
         }
       }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
     }
+  }, [navItems]);
+
+  useRafScroll(handleScroll);
+
+  const handleSectionClick = (sectionId) => {
+    scrollToSection(sectionId);
     setIsMobileMenuOpen(false);
   };
-
-  const navItems = siteConfig.header.navigationItems;
 
   return (
     <header
@@ -66,7 +54,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <button
-            onClick={() => scrollToSection("home")}
+            onClick={() => handleSectionClick("home")}
             className="text-2xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 z-10"
           >
             {siteConfig.header.logo}
@@ -77,7 +65,7 @@ const Header = () => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleSectionClick(item.id)}
                 className={`relative text-sm font-medium transition-colors duration-300 ${
                   activeSection === item.id
                     ? "text-blue-600 dark:text-blue-400"
@@ -132,7 +120,7 @@ const Header = () => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleSectionClick(item.id)}
                 className={`block w-full text-left px-4 py-3 text-base font-medium rounded-lg transition-colors duration-200 ${
                   activeSection === item.id
                     ? "text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-400"

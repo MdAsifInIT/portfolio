@@ -2,6 +2,7 @@ import React from 'react';
 import { Quote } from 'lucide-react';
 import { testimonials } from '../data/mock';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import { asArray } from '../lib/browser';
 
 const Testimonials = () => {
   const [sectionRef, isVisible] = useIntersectionObserver({ threshold: 0.1 });
@@ -19,9 +20,9 @@ const Testimonials = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+          {asArray(testimonials).map((testimonial, index) => (
             <div
-              key={testimonial.id}
+              key={testimonial.id ?? `${testimonial.name}-${index}`}
               className={`bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-700 relative transition-all duration-700 ${
                 isVisible 
                   ? 'opacity-100 translate-y-0' 

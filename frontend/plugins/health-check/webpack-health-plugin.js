@@ -36,13 +36,18 @@ class WebpackHealthPlugin {
         errors: true,
         warnings: true,
       });
+      const now = Date.now();
+      const errors = Array.isArray(info.errors) ? info.errors : [];
+      const warnings = Array.isArray(info.warnings) ? info.warnings : [];
 
       this.status.totalCompiles++;
-      this.status.compileDuration = Date.now() - this.status.lastCompileTime;
+      this.status.compileDuration = this.status.lastCompileTime
+        ? now - this.status.lastCompileTime
+        : 0;
 
       if (stats.hasErrors()) {
         this.status.state = 'failed';
-        this.status.errors = info.errors.map(err => ({
+        this.status.errors = errors.map(err => ({
           message: err.message || String(err),
           stack: err.stack,
           moduleName: err.moduleName,
@@ -50,12 +55,12 @@ class WebpackHealthPlugin {
         }));
       } else {
         this.status.state = 'success';
-        this.status.lastSuccessTime = Date.now();
+        this.status.lastSuccessTime = now;
         this.status.errors = [];
       }
 
       if (stats.hasWarnings()) {
-        this.status.warnings = info.warnings.map(warn => ({
+        this.status.warnings = warnings.map(warn => ({
           message: warn.message || String(warn),
           moduleName: warn.moduleName,
           loc: warn.loc,
@@ -69,10 +74,12 @@ class WebpackHealthPlugin {
     compiler.hooks.failed.tap(pluginName, (error) => {
       this.status.state = 'failed';
       this.status.errors = [{
-        message: error.message,
-        stack: error.stack,
+        message: error?.message || String(error),
+        stack: error?.stack,
       }];
-      this.status.compileDuration = Date.now() - this.status.lastCompileTime;
+      this.status.compileDuration = this.status.lastCompileTime
+        ? Date.now() - this.status.lastCompileTime
+        : 0;
     });
 
     // Hook: Invalid (file changed, recompiling)
@@ -86,8 +93,8 @@ class WebpackHealthPlugin {
       ...this.status,
       // Add computed fields
       isHealthy: this.status.state === 'success',
-      errorCount: this.status.errors.length,
-      warningCount: this.status.warnings.length,
+      errorCount: Array.isArray(this.status.errors) ? this.status.errors.length : 0,
+      warningCount: Array.isArray(this.status.warnings) ? this.status.warnings.length : 0,
       hasCompiled: this.status.totalCompiles > 0,
     };
   }
@@ -97,8 +104,8 @@ class WebpackHealthPlugin {
     return {
       state: this.status.state,
       isHealthy: this.status.state === 'success',
-      errorCount: this.status.errors.length,
-      warningCount: this.status.warnings.length,
+      errorCount: Array.isArray(this.status.errors) ? this.status.errors.length : 0,
+      warningCount: Array.isArray(this.status.warnings) ? this.status.warnings.length : 0,
     };
   }
 
