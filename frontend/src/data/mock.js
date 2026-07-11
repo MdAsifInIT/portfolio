@@ -209,7 +209,7 @@ export const projects = [
       role: "Creator & Maintainer",
       features: [
         "Deterministic mapping layer for known VBScript functions",
-        "OpenAI-assisted mapping candidates with review-gated promotion",
+        "GPT 5.6 Terra-assisted mapping candidates with review-gated promotion",
         "Strict Pydantic schemas and structured outputs for predictable translation blocks",
         "Token-aware execution, PSADT quality controls, and safety validation",
         "Docker Compose deployment with a React status and usage UI",
@@ -248,7 +248,7 @@ export const projects = [
     title: "OmniBranch",
     category: "AI",
     description:
-      "Autonomous AI execution skill project designed to run structured tasks with minimal manual intervention.",
+      "Autonomous AI Execution Skill designed to run structured tasks with minimal manual intervention.",
     techStack: ["AI Agents", "Autonomous Execution", "Workflow Automation"],
     image:
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
