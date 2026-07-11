@@ -714,22 +714,24 @@ export const certifications = [
   },
   {
     id: 4,
-    name: "Microsoft Certified: Azure AI Engineer Associate",
+    name: "Microsoft Certified: Azure AI Apps and Agents Developer Associate",
     code: "AI-103",
     issuer: "Microsoft",
     credentialId: "",
     issueDate: "2026-07",
     expiryDate: null,
-    credentialUrl: null,
+    credentialUrl:
+      "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-apps-and-agents-developer-associate/?practice-assessment-type=certification",
     badgeImage: "",
     skills: [
-      "Azure AI",
+      "Azure AI Foundry",
+      "AI Agents",
       "Generative AI",
       "Prompt Engineering",
-      "AI Solution Design",
+      "AI Solution Deployment",
     ],
     description:
-      "Validates advanced applied AI knowledge for building and operating intelligent solutions on Azure.",
+      "Validates the ability to build, manage, and deploy agents and AI solutions on Azure by using Microsoft AI Foundry.",
   },
 ];
 
