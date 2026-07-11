@@ -188,12 +188,12 @@ export const projects = [
     title: "Self-Evolving Transpiler",
     category: "Tools",
     description:
-      "An enterprise VBScript-to-PSADT transpiler that combines deterministic mappings, OpenAI structured outputs, and review-gated self-evolving rules.",
+      "An enterprise VBScript-to-PSADT transpiler that combines deterministic mappings, GPT 5.6 Terra structured outputs, and review-gated self-evolving rules.",
     techStack: [
       "Python 3.11",
       "FastAPI",
       "Pydantic",
-      "OpenAI GPT",
+      "GPT 5.6 Terra",
       "React 19",
       "Docker",
       "PSADT",
@@ -220,29 +220,56 @@ export const projects = [
   },
   {
     id: 3,
-    title: "NotebookLM for Windows",
-    category: "Apps",
+    title: "Samruna",
+    category: "AI",
     description:
-      "A native-like wrapper for Google's NotebookLM, providing a seamless desktop experience with immersive dark mode and distraction-free use.",
-    techStack: ["C#", ".NET 8", "WebView2", "Windows App SDK"],
+      "HCLTech OpenAI Hackathon project focused on practical AI-driven problem solving and rapid prototyping.",
+    techStack: ["OpenAI", "Hackathon Build", "Prompt Engineering"],
     image:
       "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1170&auto=format&fit=crop",
     liveUrl: null,
-    githubUrl: "https://github.com/MdAsifInIT/NotebookLMWrapper",
+    githubUrl: "https://github.com/MdAsifInIT/Samruna",
     featured: true,
     details: {
       problem:
-        "Users want a dedicated desktop experience for NotebookLM without browser clutter.",
+        "Hackathon teams need to deliver a high-impact AI solution in a short time frame with clear real-world value.",
+      role: "Builder & Contributor",
       features: [
-        "Native look and feel with immersive dark mode",
-        "Distraction-free use without tabs or address bars",
-        "Lightweight WebView2-based shell",
+        "Built as part of HCLTech OpenAI Hackathon",
+        "Rapid AI solution prototyping with practical use-case focus",
+        "Feature set optimized for demo readiness and execution speed",
       ],
-      outcomes: "Improved focus and native OS integration for a web-first Google experience.",
+      outcomes:
+        "Demonstrated strong execution, practical AI application, and fast iteration under hackathon constraints.",
     },
   },
   {
     id: 4,
+    title: "OmniBranch",
+    category: "AI",
+    description:
+      "Autonomous AI execution skill project designed to run structured tasks with minimal manual intervention.",
+    techStack: ["AI Agents", "Autonomous Execution", "Workflow Automation"],
+    image:
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
+    liveUrl: null,
+    githubUrl: "https://github.com/MdAsifInIT/OmniBranch",
+    featured: true,
+    details: {
+      problem:
+        "Teams need a reliable way to execute AI-driven tasks autonomously while preserving clear structure and control.",
+      role: "Creator & Maintainer",
+      features: [
+        "Autonomous AI task execution flow",
+        "Structured branch-oriented workflow design",
+        "Reusable skill-based execution patterns",
+      ],
+      outcomes:
+        "Improves consistency and speed for repetitive AI-assisted execution workstreams.",
+    },
+  },
+  {
+    id: 5,
     title: "PokeSwitch",
     category: "Apps",
     description:
@@ -276,7 +303,7 @@ export const projects = [
     },
   },
   {
-    id: 5,
+    id: 6,
     title: "NotionLM",
     category: "Tools",
     description:
@@ -310,7 +337,7 @@ export const projects = [
     },
   },
   {
-    id: 6,
+    id: 7,
     title: "Enterprise Solutions",
     category: "Apps",
     description:
@@ -670,6 +697,25 @@ export const certifications = [
     ],
     description:
       "Validates the ability to design and implement AI solutions using Azure AI services including Azure OpenAI, Cognitive Services, and enterprise search capabilities.",
+  },
+  {
+    id: 4,
+    name: "Microsoft Certified: Azure AI Engineer Associate",
+    code: "AI-103",
+    issuer: "Microsoft",
+    credentialId: "",
+    issueDate: "2026-07",
+    expiryDate: null,
+    credentialUrl: null,
+    badgeImage: "",
+    skills: [
+      "Azure AI",
+      "Generative AI",
+      "Prompt Engineering",
+      "AI Solution Design",
+    ],
+    description:
+      "Validates advanced applied AI knowledge for building and operating intelligent solutions on Azure.",
   },
 ];
 
