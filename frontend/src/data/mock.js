@@ -223,8 +223,14 @@ export const projects = [
     title: "Samruna",
     category: "AI",
     description:
-      "HCLTech OpenAI Hackathon project focused on practical AI-driven problem solving and rapid prototyping.",
-    techStack: ["OpenAI", "Hackathon Build", "Prompt Engineering"],
+      "A governed workflow intelligence prototype that uses Agentic AI to turn noisy enterprise traces into explainable, approval-gated automation proposals.",
+    techStack: [
+      "OpenAI Responses API",
+      "React",
+      "Node.js",
+      "Express",
+      "Workflow Intelligence",
+    ],
     image:
       "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1170&auto=format&fit=crop",
     liveUrl: null,
@@ -232,15 +238,16 @@ export const projects = [
     featured: true,
     details: {
       problem:
-        "Hackathon teams need to deliver a high-impact AI solution in a short time frame with clear real-world value.",
-      role: "Builder & Contributor",
+        "Enterprise operations contain noisy, unstructured traces, making it hard to discover repeatable workflows and propose safe automation with governance.",
+      role: "Creator & Maintainer",
       features: [
-        "Built as part of HCLTech OpenAI Hackathon",
-        "Rapid AI solution prototyping with practical use-case focus",
-        "Feature set optimized for demo readiness and execution speed",
+        "Transforms operational traces into visible workflow graphs and bottleneck insights",
+        "Generates structured Agentic AI automation proposals with policy checks and escalation paths",
+        "Requires human approval before any run and executes in safe simulation mode only",
+        "Maintains auditable events with deterministic fallback behavior when live provider calls are unavailable",
       ],
       outcomes:
-        "Demonstrated strong execution, practical AI application, and fast iteration under hackathon constraints.",
+        "Demonstrates that enterprise automation can be AI-assisted, explainable, human-governed, and safe by design without uncontrolled production-side effects.",
     },
   },
   {
@@ -248,8 +255,14 @@ export const projects = [
     title: "OmniBranch",
     category: "AI",
     description:
-      "Autonomous AI Execution Skill designed to run structured tasks with minimal manual intervention.",
-    techStack: ["AI Agents", "Autonomous Execution", "Workflow Automation"],
+      "A local-first, provider-neutral CLI that coordinates bounded AI-assisted development work across isolated Git branches and worktrees.",
+    techStack: [
+      "TypeScript",
+      "Node.js 22",
+      "pnpm Workspace",
+      "SQLite",
+      "Git Worktrees",
+    ],
     image:
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
     liveUrl: null,
@@ -257,15 +270,16 @@ export const projects = [
     featured: true,
     details: {
       problem:
-        "Teams need a reliable way to execute AI-driven tasks autonomously while preserving clear structure and control.",
+        "Teams running parallel AI-assisted development need deterministic orchestration, policy controls, and recoverable state instead of prompt-driven repository mutations.",
       role: "Creator & Maintainer",
       features: [
-        "Autonomous AI task execution flow",
-        "Structured branch-oriented workflow design",
-        "Reusable skill-based execution patterns",
+        "Creates isolated worktrees for concurrent bounded tasks with dependency-aware campaign scheduling",
+        "Persists canonical JSONL events and rebuildable SQLite projections for resumable local state",
+        "Applies policy gates, approval evidence, validation, review, reconciliation, and report generation",
+        "Uses conservative defaults that prevent force pushes, direct stable-branch writes, and automatic promotion",
       ],
       outcomes:
-        "Improves consistency and speed for repetitive AI-assisted execution workstreams.",
+        "Provides a deterministic control plane for parallel AI-assisted delivery while keeping Git lifecycle and policy decisions human-verifiable.",
     },
   },
   {
