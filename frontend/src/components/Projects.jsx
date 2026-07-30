@@ -16,7 +16,10 @@ const Projects = () => {
 
   const filteredProjects = useMemo(() => {
     if (selectedCategory === 'All') return projectList;
-    return projectList.filter(p => p.category === selectedCategory);
+    return projectList.filter(p => {
+      const cats = Array.isArray(p.category) ? p.category : (p.category ? [p.category] : []);
+      return cats.includes(selectedCategory);
+    });
   }, [projectList, selectedCategory]);
 
   useEffect(() => {
@@ -147,7 +150,7 @@ const Projects = () => {
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <span className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-2 block">
-                      {project.category}
+                      {(Array.isArray(project.category) ? project.category : (project.category ? [project.category] : [])).join(' • ')}
                     </span>
                     <h3 className="text-xl font-extrabold text-gray-950 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-snug">
                       {project.title}

@@ -42,9 +42,13 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
             className="w-full h-full object-cover"
           />
           <div className="absolute bottom-6 left-6 md:left-10 right-6 z-20">
-            <span className="inline-block px-3 py-1 mb-3 text-xs font-bold text-blue-100 uppercase bg-blue-600/30 backdrop-blur-md rounded-full border border-blue-300/30 shadow-sm">
-              {project.category}
-            </span>
+            <div className="flex flex-wrap gap-2 mb-3">
+              {(Array.isArray(project.category) ? project.category : (project.category ? [project.category] : [])).map((cat) => (
+                <span key={cat} className="inline-block px-3 py-1 text-xs font-bold text-blue-100 uppercase bg-blue-600/30 backdrop-blur-md rounded-full border border-blue-300/30 shadow-sm">
+                  {cat}
+                </span>
+              ))}
+            </div>
             <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-2 drop-shadow-lg">{project.title}</h2>
           </div>
         </div>

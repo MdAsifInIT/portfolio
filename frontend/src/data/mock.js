@@ -54,7 +54,7 @@ export const siteConfig = {
     title: "Featured Projects",
     description:
       "A collection of applications, tools, and scripts I've built to solve real-world problems.",
-    categories: ["All", "Apps", "Tools", "Scripts"],
+    categories: ["All", "AI", "Apps", "Tools", "Scripts"],
     ui: {
       featuredLabel: "Featured",
       viewDetailsLabel: "View Details",
@@ -151,7 +151,7 @@ export const projects = [
   {
     id: 1,
     title: "AICP (AI CoPackager)",
-    category: "Tools",
+    category: ["AI", "Tools"],
     description:
       "Python-first agentic packaging platform for enterprise Windows deployment teams, with deterministic PSADT generation, GitHub PR automation, and QA gates.",
     techStack: [
@@ -186,7 +186,7 @@ export const projects = [
   {
     id: 2,
     title: "Self-Evolving Transpiler",
-    category: "Tools",
+    category: ["AI", "Tools"],
     description:
       "An enterprise VBScript-to-PSADT transpiler that combines deterministic mappings, GPT 5.6 Terra structured outputs, and review-gated self-evolving rules.",
     techStack: [
@@ -221,7 +221,7 @@ export const projects = [
   {
     id: 3,
     title: "Samruna",
-    category: "AI",
+    category: ["AI", "Tools"],
     description:
       "A governed workflow intelligence prototype that uses Agentic AI to turn noisy enterprise traces into explainable, approval-gated automation proposals.",
     techStack: [
@@ -253,7 +253,7 @@ export const projects = [
   {
     id: 4,
     title: "OmniBranch",
-    category: "AI",
+    category: ["AI", "Tools"],
     description:
       "A local-first, provider-neutral CLI that coordinates bounded AI-assisted development work across isolated Git branches and worktrees.",
     techStack: [
@@ -285,7 +285,7 @@ export const projects = [
   {
     id: 5,
     title: "PokeSwitch",
-    category: "Apps",
+    category: ["Apps", "Tools"],
     description:
       "A lightweight WPF utility that toggles Docker Desktop, WSL2, and NVIDIA GPU state so developers can reclaim RAM and battery when Docker is idle.",
     techStack: [
@@ -319,7 +319,7 @@ export const projects = [
   {
     id: 6,
     title: "NotionLM",
-    category: "Tools",
+    category: ["AI", "Tools"],
     description:
       "A Notion-to-Google Docs sync pipeline that checkpoints recent edits, renders page content, and upserts into a single Google Doc.",
     techStack: [
@@ -353,7 +353,7 @@ export const projects = [
   {
     id: 7,
     title: "Enterprise Solutions",
-    category: "Apps",
+    category: ["Apps"],
     description:
       "Full-stack inventory management solution with a web client, mobile app, and server API. Designed for product, customer, and order management with container-ready deployment.",
     techStack: [
