@@ -12,7 +12,15 @@ const Projects = () => {
   const projectRefs = useRef([]);
 
   const projectList = asArray(projects);
-  const categories = asArray(siteConfig.projects.categories);
+  
+  const categories = useMemo(() => {
+    const usedCategories = new Set(
+      projectList.flatMap(p => Array.isArray(p.category) ? p.category : (p.category ? [p.category] : []))
+    );
+    return asArray(siteConfig.projects.categories).filter(
+      cat => cat === 'All' || usedCategories.has(cat)
+    );
+  }, [projectList]);
 
   const filteredProjects = useMemo(() => {
     if (selectedCategory === 'All') return projectList;
