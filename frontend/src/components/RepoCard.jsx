@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Github, Star, GitFork, Clock } from 'lucide-react';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';

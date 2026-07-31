@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { X, ExternalLink, Award, Calendar, Shield } from 'lucide-react';
 import useModalControls from '../hooks/useModalControls';

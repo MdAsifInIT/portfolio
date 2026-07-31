@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Mail } from 'lucide-react';
 import { personalInfo, siteConfig } from '../data/mock';

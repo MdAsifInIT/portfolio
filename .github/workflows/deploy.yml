@@ -44,8 +44,7 @@ jobs:
         working-directory: ./frontend
         run: yarn build
         env:
-          CI: false
-          PUBLIC_URL: ${{ github.ref_name == 'alpha' && '/portfolio/alpha' || '/portfolio' }}
+          NEXT_PUBLIC_BASE_PATH: ${{ github.ref_name == 'alpha' && '/portfolio/alpha' || '/portfolio' }}
 
       - name: Prepare Pages files
         shell: bash
@@ -55,13 +54,13 @@ jobs:
           if [ "${GITHUB_REF_NAME}" = "alpha" ]; then
             rm -rf pages-dist/alpha pages-dist/dev
             mkdir -p pages-dist/alpha
-            cp -a frontend/build/. pages-dist/alpha/
+            cp -a frontend/out/. pages-dist/alpha/
           else
             find pages-dist -mindepth 1 -maxdepth 1 \
               ! -name ".git" \
               ! -name "alpha" \
               -exec rm -rf {} +
-            cp -a frontend/build/. pages-dist/
+            cp -a frontend/out/. pages-dist/
           fi
 
           touch pages-dist/.nojekyll

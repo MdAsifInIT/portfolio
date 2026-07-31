@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { X, ExternalLink, Github, Layers, Code, CheckCircle } from 'lucide-react';
 import useModalControls from '../hooks/useModalControls';
 import { asArray, getSafeExternalUrl } from '../lib/browser';
@@ -36,10 +38,13 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
         {/* Hero Image */}
         <div className="relative h-64 md:h-80 w-full overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent z-10"></div>
-          <img 
+          <Image 
             src={project.image} 
             alt={project.title} 
             className="w-full h-full object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, 800px"
+            unoptimized
           />
           <div className="absolute bottom-6 left-6 md:left-10 right-6 z-20">
             <div className="flex flex-wrap gap-2 mb-3">

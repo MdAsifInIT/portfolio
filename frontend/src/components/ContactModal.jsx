@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { X, Mail, User, MessageSquare, Send } from 'lucide-react';
 import { personalInfo, siteConfig } from '../data/mock';

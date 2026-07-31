@@ -1,4 +1,6 @@
+'use client';
 import React, { useMemo, useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { projects, siteConfig } from '../data/mock';
 import ProjectModal from './ProjectModal';
@@ -132,10 +134,13 @@ const Projects = () => {
               {/* Image Container */}
               <div className="relative h-64 overflow-hidden bg-gray-100 dark:bg-gray-800">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-70 group-hover:opacity-95 transition-opacity duration-300 z-10"></div>
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  unoptimized
                 />
                 <div className="absolute top-4 right-4 z-20 flex gap-2">
                   {project.featured && (

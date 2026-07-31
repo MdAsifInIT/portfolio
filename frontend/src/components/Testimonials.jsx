@@ -1,4 +1,6 @@
+'use client';
 import React from 'react';
+import Image from 'next/image';
 import { Quote } from 'lucide-react';
 import { testimonials } from '../data/mock';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
@@ -38,10 +40,13 @@ const Testimonials = () => {
               </p>
               
               <div className="flex items-center gap-4">
-                <img 
+                <Image 
                   src={testimonial.avatar} 
                   alt={testimonial.name} 
                   className="w-12 h-12 rounded-full object-cover ring-2 ring-blue-100 dark:ring-blue-900 shadow-md" 
+                  width={48}
+                  height={48}
+                  unoptimized
                 />
                 <div>
                   <h4 className="font-bold text-gray-950 dark:text-white text-sm">
