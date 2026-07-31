@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Github, Linkedin, Twitter, Instagram, Youtube, Link as LinkIcon, Mail, Heart } from 'lucide-react';
 import { personalInfo, socialLinks, siteConfig } from '../data/mock';

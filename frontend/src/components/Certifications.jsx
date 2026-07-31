@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { Award, ExternalLink, Calendar } from 'lucide-react';
 import { certifications, siteConfig } from '../data/mock';

@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { Briefcase, GraduationCap } from 'lucide-react';
 import { skills, timeline, siteConfig } from '../data/mock';

@@ -1,3 +1,4 @@
+'use client';
 import React, { useMemo, useState } from 'react';
 import { Github } from 'lucide-react';
 import { openSourceRepos, siteConfig } from '../data/mock';

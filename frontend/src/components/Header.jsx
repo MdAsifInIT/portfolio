@@ -1,3 +1,4 @@
+'use client';
 import React, { useCallback, useState } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { siteConfig } from "../data/mock";
