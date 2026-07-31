@@ -149,9 +149,15 @@ const Projects = () => {
               <div className="p-8">
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <span className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-2 block">
-                      {(Array.isArray(project.category) ? project.category : (project.category ? [project.category] : [])).join(' • ')}
-                    </span>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {(Array.isArray(project.category) ? project.category : (project.category ? [project.category] : []))
+                        .filter(cat => cat && cat.trim() !== '')
+                        .map(cat => (
+                          <span key={cat} className="px-2.5 py-1 text-xs font-bold rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                            {cat}
+                          </span>
+                      ))}
+                    </div>
                     <h3 className="text-xl font-extrabold text-gray-950 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 leading-snug">
                       {project.title}
                     </h3>
