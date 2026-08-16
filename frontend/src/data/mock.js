@@ -77,7 +77,7 @@ export const siteConfig = {
   about: {
     title: "About Me",
     description:
-      "My journey in software development, expertise, and continuous learning.",
+      "Systems that work for you, not the other way around.",
     timelineTitle: "Experience & Education",
     skillsTitle: "Technical Skills",
   },
@@ -118,8 +118,8 @@ export const siteConfig = {
 // ---------------------------------------------------------------------------
 export const personalInfo = {
   name: "Md Asif",
-  title: "AI Automation Engineer",
-  bio: "I automate workflows and build fast, scalable applications for businesses. Passionate about clean code, AI tools, and creating delightful user experiences.",
+  title: "AI Engineer",
+  bio: "I architect and build intelligent AI pipelines, deterministic automation engines, and scalable enterprise systems. Turning complex, manual operational workflows into self-improving infrastructure.",
   email: "mdasifinit@gmail.com",
   location: "Bengaluru, IN",
 };
@@ -150,41 +150,6 @@ export const socialLinks = [
 export const projects = [
   {
     id: 1,
-    title: "AICP (AI CoPackager)",
-    category: ["AI", "Tools"],
-    description:
-      "Python-first agentic packaging platform for enterprise Windows deployment teams, with deterministic PSADT generation, GitHub PR automation, and QA gates.",
-    techStack: [
-      "Python",
-      "FastAPI",
-      "Temporal",
-      "PostgreSQL",
-      "PSAppDeployToolkit",
-      "OpenAI API",
-      "GitHub Actions",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1743385779347-1549dabf1320?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    liveUrl: null,
-    githubUrl: "https://github.com/MdAsifInIT/AICP",
-    featured: true,
-    details: {
-      problem:
-        "Manual app packaging is slow, inconsistent, and hard to audit, especially when silent switches, PSADT structure, and validation steps vary by package.",
-      role: "Lead Developer & Architect",
-      features: [
-        "FastAPI intake API with job status, approval, rejection, and artifact lookup",
-        "Temporal workflows for durable analysis, generation, PR creation, QA, and promotion",
-        "Deterministic PSADT rendering from approved templates and validated manifests",
-        "One branch and one PR per package for clear auditability",
-        "Simulated, Hyper-V, or Azure QA providers without locking the product to one execution target",
-      ],
-      outcomes:
-        "Turns packaging into a governed workflow where AI advises, deterministic templates decide, and QA gates control promotion.",
-    },
-  },
-  {
-    id: 2,
     title: "Self-Evolving Transpiler",
     category: ["AI", "Tools"],
     description:
@@ -216,6 +181,41 @@ export const projects = [
       ],
       outcomes:
         "Creates PSADT scripts with repeatable rules, safer output, and a path for the transpiler to evolve through reviewable mappings.",
+    },
+  },
+  {
+    id: 2,
+    title: "AICP (AI CoPackager)",
+    category: ["AI", "Tools"],
+    description:
+      "Python-first agentic packaging platform for enterprise Windows deployment teams, with deterministic PSADT generation, GitHub PR automation, and QA gates.",
+    techStack: [
+      "Python",
+      "FastAPI",
+      "Temporal",
+      "PostgreSQL",
+      "PSAppDeployToolkit",
+      "OpenAI API",
+      "GitHub Actions",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1743385779347-1549dabf1320?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    liveUrl: null,
+    githubUrl: "https://github.com/MdAsifInIT/AICP",
+    featured: true,
+    details: {
+      problem:
+        "Manual app packaging is slow, inconsistent, and hard to audit, especially when silent switches, PSADT structure, and validation steps vary by package.",
+      role: "Lead Developer & Architect",
+      features: [
+        "FastAPI intake API with job status, approval, rejection, and artifact lookup",
+        "Temporal workflows for durable analysis, generation, PR creation, QA, and promotion",
+        "Deterministic PSADT rendering from approved templates and validated manifests",
+        "One branch and one PR per package for clear auditability",
+        "Simulated, Hyper-V, or Azure QA providers without locking the product to one execution target",
+      ],
+      outcomes:
+        "Turns packaging into a governed workflow where AI advises, deterministic templates decide, and QA gates control promotion.",
     },
   },
   {
@@ -441,144 +441,144 @@ export const openSourceRepos = [
 // SKILLS
 // ---------------------------------------------------------------------------
 export const skills = {
-  "AI & Automation": [
+  "AI & LLM Engineering": [
     {
-      name: "Prompt Engineering",
+      name: "OpenAI SDK",
       description:
-        "Techniques for crafting effective prompts to communicate with large language models, optimizing output quality and relevance.",
-      url: "https://platform.openai.com/docs/guides/prompt-engineering",
-    },
-    {
-      name: "RAG (Retrieval-Augmented Generation)",
-      description:
-        "Architecture that combines information retrieval with text generation, allowing LLMs to answer questions using external knowledge bases.",
-      url: "https://www.ibm.com/topics/retrieval-augmented-generation",
-    },
-    {
-      name: "LLM API Integration",
-      description:
-        "Connecting applications to Large Language Models via APIs like OpenAI, Anthropic, or local models to add intelligent features.",
+        "Building production-grade AI features using OpenAI's API — chat completions, structured outputs, embeddings, and function calling.",
       url: "https://platform.openai.com/docs/api-reference",
+    },
+    {
+      name: "Anthropic SDK",
+      description:
+        "Integrating Claude models via the Anthropic API for enterprise reasoning, summarization, and agentic workflows.",
+      url: "https://docs.anthropic.com/",
+    },
+    {
+      name: "Structured Outputs (Pydantic / Instructor)",
+      description:
+        "Enforcing deterministic, schema-validated LLM responses using Pydantic models and the Instructor library to eliminate hallucination risk in production pipelines.",
+      url: "https://python.useinstructor.com/",
+    },
+    {
+      name: "Multi-Agent Workflows",
+      description:
+        "Designing and implementing autonomous AI agent systems capable of planning, tool use, and goal-directed orchestration across complex tasks.",
+      url: "https://www.langchain.com/agents",
+    },
+    {
+      name: "Local LLM Pipelines (LM Studio)",
+      description:
+        "Running and testing local LLM inference via LM Studio as an offline test harness for pipeline validation before cloud provider calls.",
+      url: "https://lmstudio.ai/",
     },
     {
       name: "Workflow Automation (n8n)",
       description:
-        "Building resilient, multi-step automated workflows with n8n to connect various services and APIs.",
+        "Supplementary multi-step workflow automation with n8n for connecting services, APIs, and AI pipelines with minimal code.",
       url: "https://n8n.io/",
     },
-    {
-      name: "Agent-Based Development",
-      description:
-        "Designing and implementing autonomous AI agents capable of planning, using tools, and achieving complex goals.",
-      url: "https://www.langchain.com/agents",
-    },
   ],
-  "Enterprise Packaging": [
+  "Enterprise Ops & Packaging": [
     {
-      name: "AdminStudio",
+      name: "PowerShell",
       description:
-        "Comprehensive automated application packaging tool for preparing reliable MSI, MSIX, and App-V packages for enterprise deployment.",
-      url: "https://www.flexera.com/products/adminstudio",
+        "Task automation and configuration management using PowerShell scripting for enterprise IT workflows, endpoint management, and system administration.",
+      url: "https://learn.microsoft.com/en-us/powershell/",
     },
     {
-      name: "MSIX Packaging",
+      name: "Application Packaging",
       description:
-        "Creating modern Windows application packages using the MSIX format for reliable and clean installations.",
-      url: "https://learn.microsoft.com/en-us/windows/msix/",
-    },
-    {
-      name: "PSAppDeployToolkit",
-      description:
-        "Framework for wrapping and automating enterprise application installations using PowerShell.",
+        "End-to-end enterprise application packaging: MSI/MSIX authoring, silent switch discovery, transform creation, and deployment-ready artifact generation.",
       url: "https://psappdeploytoolkit.com/",
     },
     {
-      name: "SCCM & Intune",
+      name: "PSADT (PSAppDeployToolkit)",
+      description:
+        "Framework for wrapping and automating enterprise application installations with structured PowerShell, user interaction handling, and deployment logging.",
+      url: "https://psappdeploytoolkit.com/",
+    },
+    {
+      name: "VBScript Modernization",
+      description:
+        "Transpiling and rewriting legacy VBScript deployment wrappers into modern, maintainable PowerShell and PSADT equivalents.",
+      url: "https://learn.microsoft.com/en-us/powershell/",
+    },
+    {
+      name: "Endpoint Management (SCCM / Intune)",
       description:
         "Managing and deploying applications and configurations across enterprise device fleets using Microsoft Endpoint Manager.",
       url: "https://learn.microsoft.com/en-us/mem/",
     },
-  ],
-  "Programming & Scripting": [
     {
-      name: "C# & .NET",
+      name: "Windows / Linux OS Internals",
       description:
-        "Developing modern, scalable, and high-performance applications across multiple platforms using Microsoft's ecosystem.",
-      url: "https://dotnet.microsoft.com/",
-    },
-    {
-      name: "Python",
-      description:
-        "High-level programming language used for scripting, data analysis, AI, and automation.",
-      url: "https://www.python.org/",
-    },
-    {
-      name: "PowerShell",
-      description:
-        "Task automation and configuration management framework developed by Microsoft, consisting of a command-line shell and scripting language.",
-      url: "https://learn.microsoft.com/en-us/powershell/",
-    },
-    {
-      name: "Bash & Shell",
-      description:
-        "Writing scripts to automate tasks and manage systems in Unix-like environments.",
-      url: "https://www.gnu.org/software/bash/",
+        "Deep knowledge of OS internals, process management, file system behavior, and system context execution on both Windows and Linux platforms.",
+      url: "https://learn.microsoft.com/en-us/windows/",
     },
   ],
-  // "Web Development": [
-  //   {
-  //     name: "React & Next.js",
-  //     description: "Building interactive, performant, and SEO-friendly user interfaces and web applications.",
-  //     url: "https://nextjs.org/"
-  //   },
-  //   {
-  //     name: "REST APIs & GraphQL",
-  //     description: "Designing and consuming web application interfaces for efficient data exchange between front-end and back-end systems.",
-  //     url: "https://graphql.org/"
-  //   },
-  // ],
-  "DevOps & Tools": [
+  "Backend & Cloud Architecture": [
     {
-      name: "Docker",
+      name: "Python & FastAPI",
       description:
-        "Developing, shipping, and running isolated and scalable applications using containerization technology.",
+        "Building high-performance, async backend APIs and automation services using Python and FastAPI with Pydantic validation.",
+      url: "https://fastapi.tiangolo.com/",
+    },
+    {
+      name: "TypeScript & Node.js",
+      description:
+        "Developing type-safe server-side applications and CLI tooling with TypeScript and Node.js for scalable backend systems.",
+      url: "https://www.typescriptlang.org/",
+    },
+    {
+      name: "PostgreSQL",
+      description:
+        "Designing and managing relational databases with PostgreSQL for durable, queryable application state.",
+      url: "https://www.postgresql.org/",
+    },
+    {
+      name: "Microsoft Azure (AZ-104, AI-103)",
+      description:
+        "Deploying and managing cloud infrastructure, AI services, and enterprise solutions on Microsoft Azure — certified at AI-102 and AI-103 level.",
+      url: "https://azure.microsoft.com/",
+    },
+    {
+      name: "REST APIs",
+      description:
+        "Designing and consuming RESTful APIs for efficient, scalable data exchange between front-end, back-end, and third-party services.",
+      url: "https://fastapi.tiangolo.com/",
+    },
+  ],
+  "DevOps & Containerization": [
+    {
+      name: "Docker & Docker Compose",
+      description:
+        "Containerizing applications and orchestrating multi-service environments with Docker Compose for reproducible, portable deployments.",
       url: "https://www.docker.com/",
     },
     {
-      name: "CI/CD (GitHub Actions)",
+      name: "Nginx Reverse Proxy",
       description:
-        "Automating software build, test, and deployment pipelines using continuous integration and delivery practices.",
+        "Configuring Nginx as a reverse proxy and load balancer for containerized services, with SSL termination and traffic routing.",
+      url: "https://nginx.org/",
+    },
+    {
+      name: "CI/CD Pipelines",
+      description:
+        "Automating build, test, and deployment pipelines using GitHub Actions with review-gated promotion and policy controls.",
       url: "https://github.com/features/actions",
     },
     {
-      name: "Cloud Services (AWS, Azure)",
+      name: "Git Review Gating",
       description:
-        "Deploying and managing scalable applications and infrastructure on major public cloud platforms.",
-      url: "https://aws.amazon.com/",
-    },
-    {
-      name: "Git & Version Control",
-      description:
-        "Tracking changes in source code during software development and coordinating work among programmers.",
+        "Enforcing branch protection, one-PR-per-package workflows, and human-verified promotion gates across AI-assisted development pipelines.",
       url: "https://git-scm.com/",
     },
     {
-      name: "Automation Testing",
+      name: "Linux Hardening",
       description:
-        "Writing scripts to programmatically execute tests against software applications to ensure quality and prevent regressions.",
-      url: "https://www.cypress.io/",
-    },
-    {
-      name: "Build Tools",
-      description:
-        "Configuring and using tools like Webpack, Vite, or MSBuild to compile, bundle, and optimize software projects.",
-      url: "https://vitejs.dev/",
-    },
-    {
-      name: "Visual Studio & VS Code",
-      description:
-        "Proficiency with rich Integrated Development Environments for writing, debugging, and managing code.",
-      url: "https://code.visualstudio.com/",
+        "Applying system hardening practices on Linux hosts: user isolation, service minimization, firewall configuration, and audit logging.",
+      url: "https://www.linux.org/",
     },
   ],
 };
